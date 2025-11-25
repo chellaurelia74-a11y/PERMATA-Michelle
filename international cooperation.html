@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
+    <title>Kerjasama Internasional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="international cooperation.css" rel="stylesheet">
+</head>
+<body>
+
+  <div id="progress-container">
+    <div id="progress-bar"></div>
+  </div>
+
+    <div class="scroll-circle">
+  <svg class="progress-ring" width="80" height="80">
+    <circle class="progress-ring__bg" cx="40" cy="40" r="35" />
+    <circle class="progress-ring__progress" cx="40" cy="40" r="35" />
+  </svg>
+  <span id="scroll-percent">0%</span>
+</div>
+
+<nav>
+  <div class="logo">
+    <img src="Untitled_design__5_-removebg-preview.png" alt="Logo">
+    <span>Kerjasama Internasional</span>
+  </div>
+
+</div> 
+<ul> 
+    <li><a href="jaga2.html">Home</a></li>
+    <li><a href="#latar belakang">Pendahuluan</a></li> 
+    <li><a href="#bilateral">Bilateral</a></li> 
+    <li><a href="#regional">Regional</a></li> 
+    <li><a href="#multilateral">Multilateral</a></li> 
+    <li><a href="#tujuan&manfaat">Tujuan & Manfaat</a></li> 
+</ul> 
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-text">
+    <h1>Kerjasama Internasional</h1>
+    <p><strong> Kerjasama internasional </strong>adalah kerja sama antarnegara untuk <strong>saling membantu mencapai tujuan bersama</strong>, seperti <u></u>perdamaian, pembangunan, dan penanggulangan masalah global.</u></p>
+
+    <a href="#introduction" class="scroll-btn">Mulai Jelajahi</a>
+  </div>
+
+  <!-- Layer paling depan -->
+  <div class="hero-layer-top"></div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    Kerjasama • Internasional: • Bilateral • Regional • Multilateral • 
+  </div>
+</div>
+
+
+<!-- SECTION: Pendahuluan -->
+<section class="intro-container">
+  <h2 class="section-title" id="introduction">Pendahuluan</h2>
+
+  <div class="intro-flex">
+    <div class="intro-text card-modern">
+      <h3>Apa itu 'Pendidikan'?</h3>
+<p>
+  Pendidikan merupakan hak fundamental, dan kualitasnya menentukan arah pembangunan bangsa. 
+  Menurut <strong>Ki Hajar Dewantara</strong>, pendidikan adalah upaya untuk memajukan bertumbuhnya budi pekerti 
+  (kekuatan batin dan karakter), pikiran, serta tubuh anak.
+</p>
+
+    </div>
+
+    <div class="intro-image">
+      <img src="image-removebg-preview (16).png" alt="Ki Hajar Dewantara">
+    </div>
+  </div>
+
+  <div class="intro-grid">
+    <div class="card-modern">
+      <h3>Latar Belakang</h3>
+      <p>
+        Kampanye ini lahir dari semangat bahwa setiap anak dan remaja di Indonesia berhak mendapat pendidikan 
+        yang layak, setara, dan berkualitas tanpa memandang latar belakang, status sosial, atau kondisi ekonomi.
+      </p>
+    </div>
+
+    <div class="card-modern">
+      <h3>Harapan</h3>
+      <p>
+        Melalui kampanye ini, masyarakat diajak untuk memahami urgensi pemerataan pendidikan, sekaligus 
+        berpartisipasi dalam mewujudkan ekosistem pendidikan yang inklusif, aman, bermutu, dan berkelanjutan.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2025 Website Project – Maria Michelle Aurelia Mandhana IX-4/27
+</footer>
+
+<script>
+
+    // Update progress bar on scroll
+    window.onscroll = function() {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrollPercent = (scrollTop / scrollHeight) * 100;
+      document.getElementById('progress-bar').style.width = scrollPercent + "%";
+    };
+
+const circle = document.querySelector(".progress-ring__progress");
+const percentText = document.getElementById("scroll-percent");
+
+const radius = circle.r.baseVal.value;
+const circumference = radius * 2 * Math.PI;
+
+circle.style.strokeDasharray = `${circumference} ${circumference}`;
+circle.style.strokeDashoffset = circumference;
+
+function updateProgress() {
+  const doc = document.documentElement;
+
+  const scrollTop = doc.scrollTop;
+  const scrollHeight = doc.scrollHeight - doc.clientHeight;
+
+  let percent = (scrollTop / scrollHeight) * 100;
+
+  // memastikan bisa 100% penuh
+  percent = Math.min(percent, 100);
+  percentText.textContent = Math.round(percent) + "%";
+
+  // progress bar
+  const offset = circumference - (percent / 100) * circumference;
+  circle.style.strokeDashoffset = offset <= 0.5 ? 0 : offset;
+}
+
+window.addEventListener("scroll", updateProgress);
+updateProgress();
+
+</script>
+
+    
+</body>
+</html>

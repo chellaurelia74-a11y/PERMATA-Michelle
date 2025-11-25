@@ -1,0 +1,3219 @@
+<!DOCTYPE html>\
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>PT Pelayaran Salam Bahagia - Maritime Excellence</title>
+    
+    <!-- Preload critical images -->
+    <link rel="preload" as="image" href="images/logo-white.png" />
+    <link rel="preload" as="image" href="images/bg_2.png" />
+    <link rel="preload" as="image" href="images/logosalam.png" />
+    
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="about-styles.css">
+    <link rel="stylesheet" href="image-optimization.css">
+    <link rel="icon" type="image/png" href="images/logosalam.png">
+    <style>
+      @font-face {
+        font-family: 'Humanist521BT-BoldCondensed';
+        src: url('fonts/Humanist521BT-BoldCondensed.woff2') format('woff2'),
+             url('fonts/Humanist521BT-BoldCondensed.woff') format('woff');
+        font-weight: bold;
+        font-style: normal;
+      }
+      
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+      }
+      
+      body {
+        background-color: #f5f5f5;
+        min-height: 100vh;
+      }
+
+      nav {
+        background-color: rgba(0, 51, 102, 0.9);
+        padding: 1rem 2rem;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(5px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 80px;
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        text-decoration: none;
+        z-index: 1001;
+        min-width: 0;
+      }
+
+      .company-name {
+        color: white;
+        font-family: inherit;
+        font-size: 1.1rem;
+        font-weight: 400;
+        margin-left: 15px;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 0;
+      }
+
+      .logo {
+        height: 65px;
+        width: auto;
+        margin-right: 0;
+      }
+
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.8rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        z-index: 1001;
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      /* Add responsive navigation styles */
+      @media (max-width: 992px) {
+        nav {
+          padding: 0.8rem 1.5rem;
+        }
+
+        nav ul {
+          gap: 1.5rem;
+        }
+
+        nav a {
+          font-size: 1rem;
+          padding: 0.6rem 1rem;
+        }
+
+        .logo {
+          height: 45px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          padding: 0 1rem;
+          height: 70px;
+        }
+
+        .menu-toggle {
+          display: block;
+        }
+
+        .logo {
+          height: 40px;
+          margin-right: 0;
+        }
+
+        nav ul {
+          position: fixed;
+          top: 70px;
+          left: -100%;
+          width: 100%;
+          height: calc(100vh - 70px);
+          background-color: rgba(0, 51, 102, 0.95);
+          flex-direction: column;
+          align-items: center;
+          padding: 2rem 0;
+          transition: left 0.3s ease;
+          backdrop-filter: blur(10px);
+        }
+
+        nav ul.active {
+          left: 0;
+        }
+
+        nav ul li {
+          margin: 1rem 0;
+        }
+
+        nav a {
+          font-size: 1.2rem;
+          padding: 0.8rem 2rem;
+          width: 100%;
+          text-align: center;
+        }
+
+        .company-name {
+          font-size: 0.75rem;
+          margin-left: 15px;
+          max-width: none;
+          flex-shrink: 1;
+        }
+        .logo-container {
+          min-width: 0;
+        }
+      }
+
+      nav ul {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        padding: 0.8rem 1.2rem;
+        border-radius: 4px;
+        position: relative;
+        display: inline-block;
+      }
+
+      nav a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #4d9fff;
+        transition: all 0.3s ease;
+      }
+
+      nav a:hover::after {
+        width: 100%;
+        background: #4d9fff;
+      }
+
+      nav a.active {
+        color: #ff4d4d;
+      }
+
+      nav a.active::after {
+        width: 100%;
+        background: #ff4d4d;
+      }
+
+      .hero {
+        min-height: calc(100vh - 80px);
+        margin-top: 80px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 51, 102, 0.4);
+        z-index: 1;
+      }
+
+      .ship-carousel {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 1rem;
+        gap: 1rem;
+        overflow: hidden;
+      }
+
+      .ship-row {
+        display: flex;
+        gap: 1rem;
+        padding: 0.5rem;
+      }
+
+      .ship-row-1 {
+        animation: slideRight 40s linear infinite;
+      }
+
+      .ship-row-2 {
+        animation: slideLeft 40s linear infinite;
+      }
+
+      .ship-row-3 {
+        animation: slideRight 40s linear infinite;
+      }
+
+      @keyframes slideRight {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(0%);
+        }
+      }
+
+      @keyframes slideLeft {
+        0% {
+          transform: translateX(0%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
+      .ship-card {
+        flex: 0 0 300px;
+        height: 180px;
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 16px rgba(0, 51, 102, 0.15);
+        transition: all 0.3s ease;
+        opacity: 0.85;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .ship-card:hover, .ship-card:active {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 24px rgba(0, 51, 102, 0.25);
+        opacity: 1;
+      }
+
+      .ship-image {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: #f0f0f0;
+        position: relative;
+      }
+
+      .ship-image.loading {
+        animation: shimmer 1s infinite linear;
+        background: linear-gradient(
+          90deg,
+          #f0f0f0 0%,
+          #f8f8f8 50%,
+          #f0f0f0 100%
+        );
+        background-size: 200% 100%;
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: -200% 0;
+        }
+        100% {
+          background-position: 200% 0;
+        }
+      }
+
+      .ship-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        opacity: 0;
+      }
+
+      .ship-image img.loaded {
+        opacity: 1;
+      }
+
+      .ship-card:hover img {
+        transform: scale(1.1);
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 3;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2.5rem;
+        background: rgba(0, 51, 102, 0.85);
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .hero-logo {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        margin-bottom: 2rem;
+      }
+
+      .hero-text {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .hero-text p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      }
+
+      .cta-button {
+        display: inline-block;
+        padding: 1rem 2.5rem;
+        font-size: 1.1rem;
+        color: white;
+        background-color: #ff4d4d;
+        border-radius: 30px;
+        text-decoration: none;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(255, 77, 77, 0.3);
+      }
+
+      .cta-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          120deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: all 0.5s ease;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(255, 77, 77, 0.4);
+        background-color: #ff3333;
+      }
+
+      .cta-button:hover::before {
+        left: 100%;
+      }
+
+      @media (max-width: 992px) {
+        .hero {
+          margin-top: 70px;
+          min-height: calc(100vh - 70px);
+        }
+
+        .ship-carousel {
+          padding: 0.75rem;
+          gap: 0.75rem;
+        }
+
+        .ship-card {
+          flex: 0 0 250px;
+          height: 150px;
+        }
+
+        .hero-content {
+          padding: 2rem;
+          margin: 0 1rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-content {
+          padding: 1.5rem;
+          margin: 0 1rem;
+        }
+
+        .hero-logo {
+          max-width: 220px;
+          margin-bottom: 1.5rem;
+        }
+
+        .hero-text p {
+          font-size: 1rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+          padding: 0.8rem 2rem;
+          font-size: 1rem;
+        }
+
+        .ship-card {
+          flex: 0 0 200px;
+          height: 120px;
+        }
+
+        .ship-row {
+          gap: 0.75rem;
+          padding: 0.4rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-content {
+          padding: 1.25rem;
+          margin: 0 0.75rem;
+        }
+
+        .hero-logo {
+          max-width: 180px;
+          margin-bottom: 1.25rem;
+        }
+
+        .hero-text p {
+          font-size: 0.95rem;
+          margin-bottom: 1.25rem;
+          line-height: 1.5;
+        }
+
+        .cta-button {
+          padding: 0.7rem 1.75rem;
+          font-size: 0.95rem;
+        }
+
+        .ship-card {
+          flex: 0 0 160px;
+          height: 100px;
+        }
+
+        .ship-row {
+          gap: 0.5rem;
+          padding: 0.3rem;
+        }
+
+        .ship-carousel {
+          padding: 0.5rem;
+          gap: 0.5rem;
+        }
+      }
+
+      @media (max-height: 600px) {
+        .hero-content {
+          padding: 1rem;
+        }
+
+        .hero-logo {
+          max-width: 160px;
+          margin-bottom: 1rem;
+        }
+
+        .hero-text p {
+          font-size: 0.9rem;
+          margin-bottom: 1rem;
+        }
+
+        .ship-card {
+                    flex: 0 0 140px;
+          height: 90px;
+        }
+      }
+
+      /* About Section Styles - Extended hero background */
+      .about-section {
+        padding: 5rem 2rem;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        background: none;
+        overflow: hidden;
+        margin-top: 0;
+        /* Seamless continuation from hero */
+      }
+
+      @supports (-webkit-touch-callout: none) {
+        /* CSS specific to iOS devices */
+        .about-section {
+          background-attachment: scroll;
+        }
+      }
+
+      .about-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 51, 102, 0.3) 0%,
+          rgba(0, 51, 102, 0.4) 50%,
+          rgba(0, 51, 102, 0.5) 100%
+        );
+        z-index: 1;
+      }
+
+      .about-container {
+        position: relative;
+        z-index: 2;
+      }
+
+      .about-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .about-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .about-header h2 {
+        color: white;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        position: relative;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .about-header h2:after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 4px;
+        background: #ff4d4d;
+        margin: 1rem auto;
+        border-radius: 2px;
+      }
+
+      .introduction {
+        color: #f5f5f5;
+        line-height: 1.8;
+        margin-bottom: 3rem;
+        font-size: 1.1rem;
+        text-align: justify;
+        background: rgba(0, 0, 0, 0.2);
+        padding: 2rem;
+        border-radius: 15px;
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .vision-mission-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+      }
+
+      /* Better mobile responsiveness for vision-mission cards */
+      @media (max-width: 640px) {
+        .vision-mission-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+          margin-bottom: 3rem;
+        }
+      }
+
+      .vm-card {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2.5rem;
+        border-radius: 15px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .vm-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .vm-card h3 {
+        color: #ff4d4d;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        padding-bottom: 1rem;
+      }
+
+      .vm-card h3::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: #ff4d4d;
+        border-radius: 2px;
+      }
+
+      .vm-card p {
+        color: #f5f5f5;
+        line-height: 1.8;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+      }
+
+      @media (max-width: 768px) {
+        .about-section {
+          padding: 3rem 1.5rem;
+        }
+
+        .about-header h2 {
+          font-size: 2.5rem;
+        }
+
+        .introduction {
+          padding: 1.5rem;
+          font-size: 1rem;
+        }
+
+        .vision-mission-grid {
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 1.5rem;
+        }
+
+        .vm-card {
+          padding: 2rem;
+        }
+
+        .vm-card h3 {
+          font-size: 1.8rem;
+        }
+
+        .vm-card p {
+          font-size: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .about-section {
+          padding: 2rem 1rem;
+        }
+
+        .about-header h2 {
+          font-size: 2rem;
+        }
+
+        .introduction {
+          padding: 1rem;
+          font-size: 0.95rem;
+        }
+
+        .vision-mission-grid {
+          gap: 1rem;
+          margin-bottom: 2rem;
+        }
+
+        .vm-card {
+          padding: 1.5rem;
+        }
+
+        .vm-card h3 {
+          font-size: 1.5rem;
+          margin-bottom: 1rem;
+        }
+
+        .vm-card p {
+          font-size: 0.95rem;
+          line-height: 1.6;
+        }
+      }
+
+      @media (max-width: 360px) {
+        .about-section {
+          padding: 1.5rem 0.75rem;
+        }
+
+        .about-header h2 {
+          font-size: 1.8rem;
+        }
+
+        .introduction {
+          padding: 0.75rem;
+          font-size: 0.9rem;
+        }
+
+        .vm-card {
+          padding: 1.25rem;
+        }
+
+        .vm-card h3 {
+          font-size: 1.3rem;
+          margin-bottom: 0.75rem;
+        }
+
+        .vm-card p {
+          font-size: 0.9rem;
+          margin-bottom: 0.75rem;
+        }
+      }
+
+      /* Timeline Styles */
+      .timeline-section {
+        padding: 4rem 0;
+        position: relative;
+        background: linear-gradient(135deg, #003366 0%, #004a8a 100%);
+        margin-top: 2rem;
+      }
+
+      .timeline-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .timeline-header h2 {
+        color: white;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+      }
+
+      .timeline-header h2::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: #ff4d4d;
+      }
+
+      .timeline {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .timeline::before {
+        content: '';
+        position: absolute;
+        width: 3px;
+        background: rgba(255, 255, 255, 0.2);
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .timeline-item {
+        position: relative;
+        width: 50%;
+        margin-bottom: 2.5rem;
+        padding: 0 2rem;
+      }
+
+      .timeline-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .timeline-item::before {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        background: #ff4d4d;
+        border-radius: 50%;
+        top: 0;
+        transform: translateY(50%);
+        box-shadow: 0 0 0 4px rgba(255, 77, 77, 0.2);
+        z-index: 1;
+      }
+
+      .timeline-item:nth-child(odd) {
+        left: 0;
+        text-align: right;
+      }
+
+      .timeline-item:nth-child(even) {
+        left: 50%;
+        text-align: left;
+      }
+
+      .timeline-item:nth-child(odd)::before {
+        right: -8px;
+      }
+
+      .timeline-item:nth-child(even)::before {
+        left: -8px;
+      }
+
+      .timeline-year {
+        color: #ff4d4d;
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .timeline-content {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 1rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .timeline-content:hover {
+        transform: translateY(-3px);
+      }
+
+      .timeline-text {
+        color: white;
+        font-size: 1rem;
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      @media (max-width: 768px) {
+        .timeline-section {
+          padding: 2rem 0;
+        }
+
+        .timeline-header {
+          margin-bottom: 2rem;
+        }
+
+        .timeline-header h2 {
+          font-size: 2rem;
+        }
+
+        .timeline::before {
+          left: 50.5px;
+        }
+
+        .timeline-item {
+          width: 100%;
+          padding-left: 50px;
+          padding-right: 15px;
+          margin-bottom: 2rem;
+        }
+
+        .timeline-item:nth-child(odd),
+        .timeline-item:nth-child(even) {
+          left: 0;
+          text-align: left;
+        }
+
+        .timeline-item:nth-child(odd)::before,
+        .timeline-item:nth-child(even)::before {
+          left: 11px;
+        }
+
+        .timeline-year {
+          font-size: 1.6rem;
+        }
+
+        .timeline-content {
+          padding: 0.8rem;
+        }
+
+        .timeline-text {
+          font-size: 0.9rem;
+        }
+      }
+
+      .clients-section {
+        padding: 4rem 0;
+        background: #f8f9fa;
+        overflow: hidden;
+      }
+
+      .section-title {
+        text-align: center;
+        color: #003366;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+      }
+
+      .view-toggle {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+      }
+
+      .toggle-button {
+        background: #003366;
+        color: white;
+        border: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 51, 102, 0.2);
+      }
+
+      .toggle-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          120deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: all 0.6s ease;
+        z-index: 1;
+      }
+
+      .toggle-button:hover {
+        background: #004a8a;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 51, 102, 0.3);
+      }
+
+      .toggle-button:hover::before {
+        left: 100%;
+      }
+
+      .toggle-button:active {
+        transform: translateY(0px);
+        box-shadow: 0 2px 10px rgba(0, 51, 102, 0.4);
+        transition: all 0.1s ease;
+      }
+
+      .toggle-button:active::before {
+        left: 100%;
+        transition: all 0.2s ease;
+      }
+
+      .toggle-button i {
+        font-size: 1.2rem;
+        transition: transform 0.3s ease;
+      }
+
+      .toggle-button:hover i {
+        transform: scale(1.1);
+      }
+
+      .toggle-button:active i {
+        transform: scale(0.95);
+      }
+
+      .client-carousel {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        background: #f8f9fa;
+        padding: 2rem 0;
+      }
+      .client-track {
+        display: flex;
+        gap: 2rem;
+        will-change: transform;
+        animation: client-scroll 24s linear infinite;
+        transition: none;
+      }
+      .client-track.grid-view {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 2rem;
+        animation: none !important;
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+      .client-logo {
+        flex: 0 0 200px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        margin: 0;
+        padding: 1rem;
+        overflow: hidden;
+      }
+      .client-logo img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        filter: grayscale(100%);
+        opacity: 0.7;
+        transition: all 0.3s ease;
+      }
+      .client-logo:hover img {
+        filter: grayscale(0%);
+        opacity: 1;
+      }
+      @keyframes client-scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-2200px); /* 10 logos * (200px + 20px gap) */
+        }
+      }
+
+      @keyframes moveRight {
+        from {
+          transform: translateX(-100%);
+        }
+        to {
+          transform: translateX(100vw);
+        }
+      }
+
+      @keyframes moveLeft {
+        from {
+          transform: translateX(100vw);
+        }
+        to {
+          transform: translateX(-100%);
+        }
+      }
+
+      /* Vessel Modal Styles */
+      .vessel-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 2000;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .vessel-modal.active {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 1;
+      }
+
+      .vessel-modal-content {
+        background: white;
+        width: 90%;
+        max-width: 1000px;
+        max-height: 90vh;
+        border-radius: 15px;
+        overflow: hidden;
+        position: relative;
+        transform: scale(0.9);
+        opacity: 0;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .vessel-modal.active .vessel-modal-content {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      .vessel-modal-image {
+        width: 100%;
+        height: 400px;
+        position: relative;
+        overflow: hidden;
+        background: #f5f5f5;
+      }
+
+      .vessel-modal-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+      }
+
+      .vessel-modal-details {
+        padding: 2rem;
+        max-height: calc(90vh - 400px);
+        overflow-y: auto;
+        background: white;
+      }
+
+      .vessel-modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+      }
+
+      .vessel-modal-title {
+        color: #003366;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .vessel-modal-type {
+        color: #ff4d4d;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+
+      .vessel-modal-specs {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .spec-group {
+        background: #f8f9fa;
+        padding: 1rem;
+        border-radius: 10px;
+      }
+
+      .spec-group h4 {
+        color: #003366;
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+      }
+
+      .spec-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .spec-list li {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+        color: #666;
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        z-index: 1;
+      }
+
+      .close-modal:hover {
+        background: #ff4d4d;
+        transform: rotate(90deg);
+      }
+
+      /* Update footer styles */
+      footer {
+        background-color: #003366;
+        color: white;
+        padding: 2rem 2rem;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .footer-info {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+
+      .footer-logos {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 2rem;
+        margin-top: 1rem;
+        justify-content: center;
+      }
+
+      .main-logo {
+        height: 80px;
+        width: auto;
+      }
+
+      .secondary-logos {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .secondary-logo {
+        height: 45px;
+        width: auto;
+        transition: all 0.3s ease;
+        filter: brightness(0) invert(1);
+      }
+
+      /* Specific logo size adjustments */
+      .secondary-logo[src*="bki.png"] {
+        height: 35px;
+      }
+
+      .secondary-logo[src*="iso_45001.png"],
+      .secondary-logo[src*="iso_14001.png"],
+      .secondary-logo[src*="OCIMF.png"] {
+        height: 55px;
+      }
+
+      .office h4 {
+        color: #4d9fff;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.3rem;
+        border-bottom: 2px solid #4d9fff;
+        text-align: center;
+      }
+
+      .office-details p {
+        margin: 0.3rem 0;
+        font-size: 1rem;
+        line-height: 1.4;
+        text-align: center;
+      }
+
+      .footer-careers {
+        text-align: center;
+      }
+
+      .footer-careers h3 {
+        color: #4d9fff;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.3rem;
+        border-bottom: 2px solid #4d9fff;
+      }
+
+      .footer-careers p {
+        font-size: 1rem;
+        line-height: 1.4;
+        margin-bottom: 1rem;
+      }
+
+      .footer-email {
+        font-size: 1rem;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+        background-color: #4d9fff;
+        padding: 0.6rem 1.2rem;
+        border-radius: 20px;
+        margin-top: 0.5rem;
+      }
+
+      @media (max-width: 768px) {
+        footer {
+          padding: 1.5rem 1rem;
+        }
+
+        .footer-info {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .footer-content {
+          gap: 1.5rem;
+        }
+
+        .footer-logos {
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .main-logo {
+          height: 60px;
+        }
+
+        .secondary-logos {
+          gap: 1rem;
+        }
+
+        .secondary-logo {
+          height: 40px;
+        }
+
+        .secondary-logo[src*="bki.png"] {
+          height: 30px;
+        }
+
+        .secondary-logo[src*="iso_45001.png"],
+        .secondary-logo[src*="iso_14001.png"],
+        .secondary-logo[src*="OCIMF.png"] {
+          height: 50px;
+        }
+
+        .office h4 {
+          font-size: 1.1rem;
+        }
+
+        .office-details p {
+          font-size: 0.9rem;
+        }
+
+        .footer-careers h3 {
+          font-size: 1.1rem;
+        }
+
+        .footer-careers p {
+          font-size: 0.9rem;
+        }
+
+        .footer-email {
+          font-size: 0.9rem;
+          padding: 0.5rem 1rem;
+        }
+      }
+
+      /* Update styles for ship labels */
+      .ship-label {
+        position: absolute;
+        bottom: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 51, 102, 0.8);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 15px;
+        font-size: 0.9rem;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        backdrop-filter: blur(5px);
+        pointer-events: none;
+      }
+
+      .ship-container:hover .ship-label {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-5px);
+      }
+
+      /* Mobile optimization for ship labels */
+      @media (max-width: 768px) {
+        .ship-label {
+          font-size: 0.8rem;
+          padding: 3px 10px;
+        }
+      }
+
+      /* Buffer Page Styles */
+      .buffer-page {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #003366 0%, #001830 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+        opacity: 1;
+        transition: opacity 0.2s ease;
+        will-change: opacity;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+      }
+
+      .buffer-page.fade-out {
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+      }
+
+      .buffer-page .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .buffer-page img {
+        width: 250px;
+        height: auto;
+        will-change: transform;
+        transform: translateZ(0);
+        animation: pulse 1.5s ease-in-out infinite;
+      }
+
+      .buffer-page .loading-text {
+        margin-top: 20px;
+        color: #ffffff;
+        font-size: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0.8;
+      }
+
+      @keyframes pulse {
+        0% { transform: scale(0.95) translateZ(0); }
+        50% { transform: scale(1.05) translateZ(0); }
+        100% { transform: scale(0.95) translateZ(0); }
+      }
+
+      /* Timeline Animations */
+      @keyframes subtleReveal {
+        0% {
+          opacity: 0;
+          transform: translateY(15px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .timeline-item {
+        opacity: 0;
+        transform: translateY(15px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+      }
+
+      .timeline-item.animate {
+        animation: subtleReveal 0.6s ease-out forwards;
+      }
+
+      .timeline-item:nth-child(1) { animation-delay: 0.05s; }
+      .timeline-item:nth-child(2) { animation-delay: 0.1s; }
+      .timeline-item:nth-child(3) { animation-delay: 0.15s; }
+      .timeline-item:nth-child(4) { animation-delay: 0.2s; }
+      .timeline-item:nth-child(5) { animation-delay: 0.25s; }
+      .timeline-item:nth-child(6) { animation-delay: 0.3s; }
+              .timeline-item:nth-child(7) { animation-delay: 0.35s; }
+        .timeline-item:nth-child(8) { animation-delay: 0.4s; }
+
+      html {
+        scroll-behavior: smooth;
+        scrollbar-width: thin;
+        scrollbar-color: #003366 #f0f0f0;
+      }
+
+      html::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      html::-webkit-scrollbar-track {
+        background: #f0f0f0;
+        border-radius: 4px;
+      }
+
+      html::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #003366, #0066cc);
+        border-radius: 4px;
+        transition: background 0.3s ease;
+      }
+
+      html::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, #0066cc, #4d9fff);
+      }
+
+      body {
+        background-color: #f5f5f5;
+        min-height: 100vh;
+      }
+
+      /* Smooth Section Transition Styles */
+      .section-transition {
+        position: relative;
+        height: 60px;
+        overflow: hidden;
+        background: linear-gradient(180deg, 
+          rgba(0, 0, 0, 0.6) 0%, 
+          rgba(0, 0, 0, 0.6) 100%);
+        z-index: 2;
+        margin-top: -1px;
+        margin-bottom: -1px;
+      }
+
+      .transition-wave {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        animation: wave-flow 8s ease-in-out infinite;
+        opacity: 0.3;
+      }
+
+      @keyframes wave-flow {
+        0%, 100% {
+          transform: translateX(0px) translateY(0px);
+        }
+        25% {
+          transform: translateX(-10px) translateY(-2px);
+        }
+        50% {
+          transform: translateX(-20px) translateY(0px);
+        }
+        75% {
+          transform: translateX(-10px) translateY(2px);
+        }
+      }
+
+      /* Enhanced About Section Styles */
+      .about-section {
+        margin-top: -1px; /* Remove any gap */
+        position: relative;
+      }
+
+      .about-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+          radial-gradient(circle at 20% 50%, rgba(77, 159, 255, 0.1) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(255, 77, 77, 0.1) 0%, transparent 50%),
+          radial-gradient(circle at 40% 80%, rgba(77, 159, 255, 0.1) 0%, transparent 50%);
+        z-index: 1;
+        animation: gentle-pulse 6s ease-in-out infinite;
+      }
+
+      @keyframes gentle-pulse {
+        0%, 100% {
+          opacity: 0.3;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+
+      .about-container {
+        position: relative;
+        z-index: 2;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-section {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.8s ease-out;
+      }
+
+      .animate-section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .animate-section.delay-200 {
+        transition-delay: 0.2s;
+      }
+
+      .animate-section.delay-300 {
+        transition-delay: 0.3s;
+      }
+
+      /* Continuous background container */
+      .hero-about-container {
+        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("images/bg_2.png");
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        position: relative;
+        min-height: 100vh;
+        width: 100%;
+      }
+
+      /* iOS and mobile fallback for fixed background */
+      @supports (-webkit-touch-callout: none) {
+        .hero-about-container {
+          background-attachment: scroll;
+        }
+      }
+
+      /* Additional mobile fallback for devices that don't support fixed backgrounds well */
+      @media (max-width: 768px) {
+        .hero-about-container {
+          background-attachment: scroll;
+        }
+      }
+
+      /* Responsive background adjustments */
+      @media (max-width: 1200px) {
+        .hero-about-container {
+          background-size: cover;
+          background-position: center center;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .hero-about-container {
+          background-size: cover;
+          background-position: center center;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-about-container {
+          background-size: cover;
+          background-position: center center;
+          min-height: auto;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-about-container {
+          background-size: cover;
+          background-position: center center;
+        }
+      }
+
+      /* For very wide screens */
+      @media (min-width: 1920px) {
+        .hero-about-container {
+          background-size: cover;
+          background-position: center center;
+        }
+      }
+
+      /* For portrait orientation on mobile */
+      @media (orientation: portrait) and (max-width: 768px) {
+        .hero-about-container {
+          background-size: cover;
+          background-position: center top;
+        }
+      }
+
+      /* For landscape orientation on mobile */
+      @media (orientation: landscape) and (max-height: 600px) {
+        .hero-about-container {
+          background-size: cover;
+          background-position: center center;
+        }
+      }
+
+      /* For ultra-wide screens (21:9 aspect ratio and wider) */
+      @media (min-aspect-ratio: 21/9) {
+        .hero-about-container {
+          background-size: cover;
+          background-position: center center;
+        }
+      }
+
+      /* For very tall screens (portrait tablets, etc.) */
+      @media (max-aspect-ratio: 3/4) {
+        .hero-about-container {
+          background-size: cover;
+          background-position: center top;
+        }
+      }
+
+      /* High DPI/Retina displays */
+      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        .hero-about-container {
+          background-size: cover;
+          background-position: center center;
+        }
+      }
+
+      /* Additional responsive breakpoints for better scaling */
+      @media (max-width: 375px) {
+        .hero-about-container {
+          background-size: cover;
+          background-position: center center;
+        }
+      }
+
+      @media (max-width: 320px) {
+        .hero-about-container {
+          background-size: cover;
+          background-position: center center;
+        }
+      }
+
+      /* For tablets in landscape mode */
+      @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+        .hero-about-container {
+          background-size: cover;
+          background-position: center center;
+        }
+      }
+
+      /* For tablets in portrait mode */
+      @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+        .hero-about-container {
+          background-size: cover;
+          background-position: center top;
+        }
+      }
+
+      /* Smooth scrolling for the entire page */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Responsive styles for transition */
+      @media (max-width: 768px) {
+        .section-transition {
+          height: 40px;
+        }
+        
+        .transition-wave {
+          animation-duration: 6s;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .section-transition {
+          height: 30px;
+        }
+      }
+
+      @media (max-width: 992px) {
+        nav {
+          padding: 0.8rem 1.5rem;
+        }
+
+        nav ul {
+          gap: 1.5rem;
+        }
+
+        nav a {
+          font-size: 1rem;
+          padding: 0.6rem 1rem;
+        }
+
+        .logo {
+          height: 45px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          padding: 0 1rem;
+          height: 70px;
+        }
+
+        .menu-toggle {
+          display: block;
+        }
+
+        .logo {
+          height: 40px;
+          margin-right: 0;
+        }
+
+        nav ul {
+          position: fixed;
+          top: 70px;
+          left: -100%;
+          width: 100%;
+          height: calc(100vh - 70px);
+          background-color: rgba(0, 51, 102, 0.95);
+          flex-direction: column;
+          align-items: center;
+          padding: 2rem 0;
+          transition: left 0.3s ease;
+          backdrop-filter: blur(10px);
+        }
+
+        nav ul.active {
+          left: 0;
+        }
+
+        nav ul li {
+          margin: 1rem 0;
+        }
+
+        nav a {
+          font-size: 1.2rem;
+          padding: 0.8rem 2rem;
+          width: 100%;
+          text-align: center;
+        }
+
+        .company-name {
+          font-size: 0.75rem;
+          margin-left: 15px;
+          max-width: none;
+          flex-shrink: 1;
+        }
+        .logo-container {
+          min-width: 0;
+        }
+      }
+
+      .client-track.grid-view .client-logo img {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        display: block;
+      }
+
+      @keyframes logo-spawn {
+        0% {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      .logo-spawn {
+        animation: logo-spawn 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Buffer Page -->
+    <div class="buffer-page" id="buffer-page">
+      <div class="logo-container">
+        <img src="images/logo.gif" alt="Loading...">
+      </div>
+      <div class="loading-text">Loading</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+      <a href="index.html" class="logo-container">
+        <img src="images/logo-white.png" alt="Salam Logo" class="logo">
+        <span class="company-name">PT PELAYARAN SALAM BAHAGIA</span>
+      </a>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      <ul id="nav-menu">
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="fleet.html" class="nav-link">Our Fleet</a></li>
+        <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+        <li><a href="hse.html" class="nav-link">QHSE</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+
+    <style>
+      /* Add these mobile menu styles */
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.8rem;
+        cursor: pointer;
+        padding: 0.5rem;
+      }
+
+      @media (max-width: 768px) {
+        .menu-toggle {
+          display: block;
+        }
+
+        nav {
+          padding: 1rem;
+        }
+
+        .logo-container {
+          width: auto;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          gap: 0;
+        }
+
+        #nav-menu {
+          display: none;
+          width: 100%;
+          position: absolute;
+          top: 80px;
+          left: 0;
+          background: rgba(0, 51, 102, 0.95);
+          flex-direction: column;
+          padding: 1rem 0;
+          gap: 0;
+        }
+
+        #nav-menu.active {
+          display: flex;
+        }
+
+        #nav-menu li {
+          width: 100%;
+        }
+
+        #nav-menu a {
+          width: 100%;
+          padding: 1rem 2rem;
+          display: block;
+          text-align: center;
+        }
+
+        .logo {
+          height: 50px;
+        }
+      }
+    </style>
+
+    <script>
+      // Buffer page timing
+      document.addEventListener('DOMContentLoaded', function() {
+        const bufferPage = document.getElementById('buffer-page');
+        if (!bufferPage) return;
+        
+        // Force any pending transitions to complete
+        bufferPage.style.transition = 'none';
+        bufferPage.offsetHeight; // Force reflow
+        bufferPage.style.transition = 'opacity 0.2s ease';
+        
+        // Add loading text animation
+        const loadingText = bufferPage.querySelector('.loading-text');
+        let dots = 0;
+        const loadingInterval = setInterval(() => {
+          dots = (dots + 1) % 4;
+          loadingText.textContent = 'Loading' + '.'.repeat(dots);
+        }, 500);
+
+        // Initialize image loading optimization
+        const shipImages = document.querySelectorAll('.ship-image');
+        let loadedShipImages = 0;
+        const totalShipImages = shipImages.length;
+
+        function handleShipImageLoad(img) {
+          img.classList.add('loaded');
+          img.parentElement.classList.remove('loading');
+          loadedShipImages++;
+
+          // When all images are loaded, remove the buffer page
+          if (loadedShipImages === totalShipImages) {
+            clearInterval(loadingInterval);
+            bufferPage.classList.add('fade-out');
+            setTimeout(function() {
+              bufferPage.remove();
+            }, 200);
+          }
+        }
+
+        // Set up Intersection Observer for lazy loading
+        const imageObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              if (img.dataset.src) {
+                img.src = img.dataset.src;
+                delete img.dataset.src;
+              }
+              imageObserver.unobserve(img);
+            }
+          });
+        }, {
+          rootMargin: '50px 0px',
+          threshold: 0.01
+        });
+
+        shipImages.forEach(container => {
+          const img = container.querySelector('img');
+          container.classList.add('loading');
+          
+          if (img.complete) {
+            handleShipImageLoad(img);
+          } else {
+            img.addEventListener('load', () => handleShipImageLoad(img));
+            img.addEventListener('error', () => {
+              console.error('Failed to load image:', img.src);
+              container.classList.remove('loading');
+              container.classList.add('error');
+              loadedShipImages++; // Count errors to not block loading
+            });
+          }
+
+          // Observe image for lazy loading
+          imageObserver.observe(img);
+        });
+      });
+
+      // Add mobile menu toggle function
+      function toggleMenu() {
+        const menu = document.getElementById('nav-menu');
+        menu.classList.toggle('active');
+      }
+    </script>
+
+    <!-- Continuous background container for hero and about sections -->
+    <div class="hero-about-container">
+      <!-- Hero Section -->
+      <section class="hero">
+      <div class="ship-carousel">
+        <div class="ship-row ship-row-1">
+          <!-- Row 1: Moving Right -->
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/merrill.png" alt="Merrill">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/ocean_zircon.png" alt="Ocean Zircon">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/psb_3203.png" alt="PSB 3203">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/psb_3301.png" alt="PSB 3301">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/mariana_vii.png" alt="Mariana VII">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/mariana_ix.png" alt="Mariana IX">
+            </div>
+          </div>
+          <!-- Duplicate for seamless loop -->
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/merrill.png" alt="Merrill">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/ocean_zircon.png" alt="Ocean Zircon">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/psb_3203.png" alt="PSB 3203">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/psb_3301.png" alt="PSB 3301">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/mariana_vii.png" alt="Mariana VII">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/mariana_ix.png" alt="Mariana IX">
+            </div>
+          </div>
+        </div>
+
+        <div class="ship-row ship-row-2">
+          <!-- Row 2: Moving Left -->
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/nur_hidayah_1101.png" alt="Nur Hidayah 1101">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/osco_vii.png" alt="Osco VII">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/flotug1600.png" alt="Flotug1600">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/seacove_pearl.png" alt="Seacove Pearl">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/spo_swift.png" alt="SPO Swift">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/psb_support_200.png" alt="PSB Support 200">
+            </div>
+          </div>
+          <!-- Duplicate for seamless loop -->
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/nur_hidayah_1101.png" alt="Nur Hidayah 1101">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/osco_vii.png" alt="Osco VII">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/flotug1600.png" alt="Flotug1600">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/seacove_pearl.png" alt="Seacove Pearl">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/spo_swift.png" alt="SPO Swift">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/psb_support_200.png" alt="PSB Support 200">
+            </div>
+          </div>
+        </div>
+
+        <div class="ship-row ship-row-3">
+          <!-- Row 3: Moving Right -->
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/spo_intan.png" alt="SPO Intan">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/spo_robin.png" alt="SPO Robin">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/spo_eagle.png" alt="SPO Eagle I">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/psb_roller.png" alt="PSB Roller">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/mas_musi.png" alt="Mas Musi">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/ocean_kilo.png" alt="Ocean Kilo">
+            </div>
+          </div>
+          <!-- Duplicate for seamless loop -->
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/spo_intan.png" alt="SPO Intan">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/spo_robin.png" alt="SPO Robin">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/spo_eagle.png" alt="SPO Eagle I">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/psb_roller.png" alt="PSB Roller">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/mas_musi.png" alt="Mas Musi">
+            </div>
+          </div>
+          <div class="ship-card">
+            <div class="ship-image">
+              <img data-src="images/ship_pics/ocean_kilo.png" alt="Ocean Kilo">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-content">
+        <img src="images/logosalam.png" alt="Salam Bahagia Logo" class="hero-logo" width="300" height="auto" fetchpriority="high">
+        <div class="hero-text">
+          <p>Your trusted partner in maritime excellence, providing comprehensive marine services and innovative solutions for the shipping industry.</p>
+          <a href="contact.html" class="cta-button">Get in Touch</a>
+        </div>
+      </div>
+      
+      <!-- Smooth transition element -->
+      <div class="section-transition">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="transition-wave">
+          <path d="m0,49.98C149.99,150 349.2,-49.98 599.98,49.98C849.99,150 1050.01,-49.98 1200,49.98L1200,120L0,120Z" style="fill: rgba(0, 0, 0, 0.3);"></path>
+        </svg>
+      </div>
+    </section>
+
+    <section id="about" class="about-section fade-in-section">
+      <div class="about-container">
+        <div class="about-header">
+          <h2>About Us</h2>
+        </div>
+
+        <p class="introduction animate-section delay-200">PT. PELAYARAN SALAM BAHAGIA since its establishment in 1965, had been focusing in general cargo vessels serving several ports in Indonesia such as Jambi, Jakarta, Padang, Palembang, Pontianak and Surabaya. And since 1998, has actively provided marine vessels and marine related services to the oil and gas industries in Indonesia.</p>
+        <p class="introduction animate-section delay-300">The company since 1998 made headway in acquiring its own fleet of Anchor Handling Tugs (AHT), Crane Barges, Accommodation Work Barges, Crew Boats, Towing Tugs and Utility Vessels to fulfill the marine support / offshore requirements of the oil and gas industries. Rooted in philosophy of safe, timely and high service quality and a firm belief that each client is a partner.</p>
+
+        <div class="vision-mission-grid">
+          <div class="vm-card">
+            <h3>Vision</h3>
+            <p>To be a leader in shipping management in Energy Industry</p>
+          </div>
+
+          <div class="vm-card">
+            <h3>Mission</h3>
+            <p>To provide high quality shipping supporting service through the development and innovative solution implementation with safety commitment.</p>
+            <p>To achieve highest professional standard through integrity, working quality and efficiencies and to persuade continuity for the benefit of all stake holders.</p>
+          </div>
+        </div>
+
+        <div class="timeline-section">
+          <div class="timeline-header">
+            <h2>Company Milestones</h2>
+          </div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-year">1965</div>
+              <div class="timeline-content">
+                <p class="timeline-text">PT. Pelayaran Salam Bahagia was established. With most of the fleets are cargo vessels.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-year">1998</div>
+              <div class="timeline-content">
+                <p class="timeline-text">Providing marine vessel and marine related services to the oil and gas industries in Indonesia.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-year">2002</div>
+              <div class="timeline-content">
+                <p class="timeline-text">Obtained SIUPAL.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-year">2011</div>
+              <div class="timeline-content">
+                <p class="timeline-text">ISO 9001:2008 Certified from Lloyd's Register.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-year">2012</div>
+              <div class="timeline-content">
+                <p class="timeline-text">HSE reward from ConocoPhillips in appreciation for 1 year marine operation zero accident.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-year">2014</div>
+              <div class="timeline-content">
+                <p class="timeline-text">Document of Compliance (DOC) Certified from Ministry of Transportation and Safety performance operating without any recordable case under ConocoPhillips Indonesia operational control in 2013.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <section class="clients-section">
+      <div class="container">
+        <h2 class="section-title">Our Clients</h2>
+        <div class="view-toggle">
+          <button class="toggle-button" onclick="toggleView()">
+            <i class="fas fa-th"></i>
+            <span class="toggle-text">Show Grid View</span>
+          </button>
+        </div>
+        <div class="client-carousel">
+          <div class="client-track">
+            <!-- First set of logos -->
+            <div class="client-logo"><img src="images/clients/client1.png" alt="Client 1" loading="lazy"></div>
+            <div class="client-logo"><img src="images/clients/client2.png" alt="Client 2" loading="lazy"></div>
+            <div class="client-logo"><img src="images/clients/client3.png" alt="Client 3" loading="lazy"></div>
+            <div class="client-logo"><img src="images/clients/client4.png" alt="Client 4" loading="lazy"></div>
+            <div class="client-logo"><img src="images/clients/client5.png" alt="Client 5" loading="lazy"></div>
+            <div class="client-logo"><img src="images/clients/client6.png" alt="Client 6" loading="lazy"></div>
+            <div class="client-logo"><img src="images/clients/client7.png" alt="Client 7" loading="lazy"></div>
+            <div class="client-logo"><img src="images/clients/client8.png" alt="Client 8" loading="lazy"></div>
+            <div class="client-logo"><img src="images/clients/client9.png" alt="Client 9" loading="lazy"></div>
+            <div class="client-logo"><img src="images/clients/client10.png" alt="Client 10" loading="lazy"></div>
+            <!-- Duplicate set for seamless loop -->
+            <div class="client-logo"><img src="images/clients/client1.png" alt="Client 1" loading="lazy"></div>
+            <div class="client-logo"><img src="images/clients/client2.png" alt="Client 2" loading="lazy"></div>
+            <div class="client-logo"><img src="images/clients/client3.png" alt="Client 3" loading="lazy"></div>
+            <div class="client-logo"><img src="images/clients/client4.png" alt="Client 4" loading="lazy"></div>
+            <div class="client-logo"><img src="images/clients/client5.png" alt="Client 5" loading="lazy"></div>
+            <div class="client-logo"><img src="images/clients/client6.png" alt="Client 6" loading="lazy"></div>
+            <div class="client-logo"><img src="images/clients/client7.png" alt="Client 7" loading="lazy"></div>
+            <div class="client-logo"><img src="images/clients/client8.png" alt="Client 8" loading="lazy"></div>
+            <div class="client-logo"><img src="images/clients/client9.png" alt="Client 9" loading="lazy"></div>
+            <div class="client-logo"><img src="images/clients/client10.png" alt="Client 10" loading="lazy"></div>
+          </div>
+        </div>
+
+        <style>
+        .client-carousel {
+          width: 100%;
+          overflow: hidden;
+          position: relative;
+          background: #f8f9fa;
+          padding: 2rem 0;
+        }
+        .client-track {
+          display: flex;
+          gap: 2rem;
+          animation: client-scroll 24s linear infinite;
+        }
+        .client-logo {
+          flex: 0 0 200px;
+          height: 100px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: white;
+          border-radius: 8px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+          margin: 0;
+          padding: 1rem;
+          overflow: hidden;
+        }
+        .client-logo img {
+          max-width: 100%;
+          max-height: 100%;
+          object-fit: contain;
+          filter: grayscale(100%);
+          opacity: 0.7;
+          transition: all 0.3s ease;
+        }
+        .client-logo:hover img {
+          filter: grayscale(0%);
+          opacity: 1;
+        }
+        @keyframes client-scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-2200px); /* 10 logos * (200px + 20px gap) */
+          }
+        }
+        </style>
+      </div>
+    </section>
+
+    <!-- Add the vessel modal template before the closing body tag -->
+    <div class="vessel-modal" id="vessel-modal">
+      <div class="vessel-modal-content">
+        <button class="close-modal" onclick="closeVesselModal()">×</button>
+        <div class="vessel-modal-image">
+          <img src="" alt="" id="modal-vessel-image">
+        </div>
+        <div class="vessel-modal-details">
+          <div class="vessel-modal-header">
+            <div>
+              <h2 class="vessel-modal-title" id="modal-vessel-name"></h2>
+              <div class="vessel-modal-type" id="modal-vessel-type"></div>
+            </div>
+          </div>
+          <div class="vessel-modal-specs" id="modal-vessel-specs">
+            <!-- Specs will be dynamically inserted here -->
+          </div>
+          <div class="vessel-modal-description" id="modal-vessel-description">
+            <!-- Description will be dynamically inserted here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-info">
+          <div class="office">
+            <h4>MAIN OFFICE</h4>
+            <div class="office-details">
+              <p>Jl. Pasar 16 Ilir no. 571/i</p>
+              <p>Palembang 30122</p>
+              <p>Phone: (0711) 373388</p>
+              <p>Fax: (0711) 311587</p>
+            </div>
+          </div>
+
+          <div class="office">
+            <h4>REPRESENTATIVE OFFICE</h4>
+            <div class="office-details">
+              <p>Taman Aries</p>
+              <p>Jalan Kembang Kencana B2 no.2A-B</p>
+              <p>Jakarta Barat</p>
+              <p>Phone: (021) 50678988</p>
+            </div>
+          </div>
+
+          <div class="footer-careers">
+            <h3>Crew Recruitment</h3>
+            <p>Please send your CV to crewing@salambahagia.com</p>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=crewing@salambahagia.com" target="_blank" class="footer-email">Contact Us</a>
+          </div>
+        </div>
+
+        <div class="footer-logos">
+          <img src="images/footer_logo/salam.png" alt="Salam Bahagia Logo" class="main-logo">
+          <div class="secondary-logos">
+            <img src="images/footer_logo/PHOTO-2025-06-05-06-40-16.png" alt="ISO 9001 Certification" class="secondary-logo">
+            <img src="images/footer_logo/iso_14001.png" alt="ISO 14001 Certification" class="secondary-logo">
+            <img src="images/footer_logo/iso_45001.png" alt="ISO 45001 Certification" class="secondary-logo">
+            <img src="images/footer_logo/ukas_footer-removebg-preview.png" alt="UKAS Certification" class="secondary-logo">
+            <img src="images/footer_logo/OCIMF.png" alt="OCIMF Member" class="secondary-logo">
+            <img src="images/footer_logo/bki.png" alt="BKI Certification" class="secondary-logo">
+            <img src="images/footer_logo/insa.png" alt="INSA Member" class="secondary-logo">
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script>
+      // Global variables
+      let isGridView = false;
+
+      function toggleView() {
+        const track = document.querySelector('.client-track');
+        const carousel = document.querySelector('.client-carousel');
+        const button = document.querySelector('.toggle-button');
+        const buttonText = button.querySelector('.toggle-text');
+        const buttonIcon = button.querySelector('i');
+        
+        isGridView = !isGridView;
+        
+        // Remove all client logos
+        while (track.firstChild) {
+          track.removeChild(track.firstChild);
+        }
+        
+        const uniqueLogos = [
+          'client1.png','client2.png','client3.png','client4.png','client5.png','client6.png','client7.png','client8.png','client9.png','client10.png','client11.png','client12.png','client13.png','client14.png','client15.png','client16.png','client17.png','client18.png','client19.png','client20.png','client21.png','client22.png','client23.png','client24.png','client25.png','client26.png','client27.png','client28.png','client29.png','client30.png','client31.png','client32.png','client33.png','client34.png','client35.png','client36.png','client37.png','client38.png','client39.png','client40.png','client41.png','client42.png','client43.png','client44.png','client45.png','client46.png','client47.png'
+        ];
+        if (isGridView) {
+          // Show only unique logos in grid view with spawn animation
+          uniqueLogos.forEach((filename, i) => {
+            const div = document.createElement('div');
+            div.className = 'client-logo logo-spawn';
+            div.style.animationDelay = (i * 0.03) + 's';
+            const img = document.createElement('img');
+            img.src = `images/clients/${filename}`;
+            img.alt = filename.replace('.png','').replace(/_/g,' ');
+            img.loading = 'lazy';
+            div.appendChild(img);
+            track.appendChild(div);
+            // Remove animation class after animation ends
+            div.addEventListener('animationend', () => {
+              div.classList.remove('logo-spawn');
+              div.style.animationDelay = '';
+            }, { once: true });
+          });
+          track.classList.add('grid-view');
+          carousel.classList.add('grid-view');
+          buttonText.textContent = 'Show Carousel View';
+          buttonIcon.classList.remove('fa-th');
+          buttonIcon.classList.add('fa-stream');
+        } else {
+          // Restore duplicated logos for carousel with spawn animation
+          for (let j = 0; j < 2; j++) {
+            uniqueLogos.forEach((filename, i) => {
+              const div = document.createElement('div');
+              div.className = 'client-logo logo-spawn';
+              div.style.animationDelay = (i * 0.02) + 's';
+              const img = document.createElement('img');
+              img.src = `images/clients/${filename}`;
+              img.alt = filename.replace('.png','').replace(/_/g,' ');
+              img.loading = 'lazy';
+              div.appendChild(img);
+              track.appendChild(div);
+              // Remove animation class after animation ends
+              div.addEventListener('animationend', () => {
+                div.classList.remove('logo-spawn');
+                div.style.animationDelay = '';
+              }, { once: true });
+            });
+          }
+          track.classList.remove('grid-view');
+          carousel.classList.remove('grid-view');
+          buttonText.textContent = 'Show Grid View';
+          buttonIcon.classList.remove('fa-stream');
+          buttonIcon.classList.add('fa-th');
+        }
+      }
+
+      // Initialize carousel functionality
+      const track = document.querySelector('.client-track');
+      const carousel = document.querySelector('.client-carousel');
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const logos = track.querySelectorAll('.client-logo');
+        
+        // Keep track of loaded images
+        let loadedImages = 0;
+        const totalImages = logos.length;
+        
+        // Function to handle image load
+        const handleImageLoad = (logo) => {
+          loadedImages++;
+          logo.classList.add('loaded');
+          
+          // When all images are loaded, start the carousel
+          if (loadedImages === totalImages) {
+            track.classList.remove('loading');
+            track.classList.add('loaded');
+            track.style.animationPlayState = 'running';
+            // Set the total number of logos for the animation (use totalImages, not divided by 3)
+            track.style.setProperty('--total-logos', totalImages.toString());
+          }
+        };
+        
+        // Load all images
+        logos.forEach(logo => {
+          const img = logo.querySelector('img');
+          
+          if (img.complete) {
+            handleImageLoad(logo);
+          } else {
+            img.onload = () => handleImageLoad(logo);
+            img.onerror = () => {
+              console.error('Failed to load image:', img.src);
+              loadedImages++; // Count error as loaded to not block the carousel
+              if (loadedImages === totalImages) {
+                track.classList.remove('loading');
+                track.classList.add('loaded');
+                track.style.animationPlayState = 'running';
+                track.style.setProperty('--total-logos', totalImages.toString());
+              }
+            };
+          }
+        });
+
+        // (No hover/touch pause code)
+      });
+
+      // Add sparkle effect
+      function createSparkles() {
+        const background = document.querySelector('.animated-background');
+        for (let i = 0; i < 50; i++) {
+          const sparkle = document.createElement('div');
+          sparkle.className = 'sparkle';
+          sparkle.style.left = Math.random() * 100 + '%';
+          sparkle.style.top = Math.random() * 100 + '%';
+          sparkle.style.animation = `sparkle ${2 + Math.random() * 3}s linear infinite ${Math.random() * 5}s`;
+          background.appendChild(sparkle);
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', createSparkles);
+
+      // Optimize animations
+      document.addEventListener('DOMContentLoaded', function() {
+        const ships = document.querySelectorAll('.ship-container');
+        ships.forEach(ship => {
+          ship.style.backfaceVisibility = 'hidden';
+          ship.style.perspective = '1000px';
+        });
+      });
+
+      // Vessel data
+      const vesselData = {
+        'Merril': {
+          type: 'ASD Tug/Fifi-1',
+          image: 'images/ship_pics/merrill.png',
+          specs: [
+            { icon: '⚡', text: 'Power: 2 x 2500HP' },
+            { icon: '📅', text: 'Built: 2017' },
+            { icon: '🔥', text: 'Fifi-1 Equipped' },
+            { icon: '🎯', text: 'Bollard Pull: 65T' }
+          ],
+          description: 'Merril is a powerful ASD Tug equipped with advanced firefighting capabilities (Fifi-1). With its twin 2500HP engines, it excels in harbor operations, ship assistance, and emergency response scenarios.'
+        },
+        'Ocean Zircon': {
+          type: 'ASD Tug',
+          image: 'images/ship_pics/ocean_zircon.png',
+          specs: [
+            { icon: '⚡', text: 'Power: 2 x 2000HP' },
+            { icon: '📅', text: 'Built: 2010' },
+            { icon: '🎯', text: 'Bollard Pull: 50T' },
+            { icon: '📏', text: 'LOA: 32m' }
+          ],
+          description: 'Ocean Zircon is a versatile ASD tug designed for efficient harbor operations and coastal towing. Its twin 2000HP engines provide reliable performance for various maritime tasks.'
+        },
+        'Nur Hidayah 1101': {
+          type: 'Flat Top Barge',
+          image: 'images/ship_pics/nur_hidayah_1101.png',
+          specs: [
+            { icon: '📏', text: 'Length: 230 feet' },
+            { icon: '⚖️', text: 'Capacity: 3000 DWT' },
+            { icon: '📅', text: 'Built: 2015' },
+            { icon: '📐', text: 'Deck Space: 200m²' }
+          ],
+          description: 'Nur Hidayah 1101 is a versatile flat top barge designed for heavy cargo transportation. Its spacious deck and robust construction make it ideal for various maritime logistics operations.'
+        },
+        'Flotug1600': {
+          type: 'Crane Barge',
+          image: 'images/ship_pics/flotug1600.png',
+          specs: [
+            { icon: '🏗️', text: 'Crane Capacity: 100T' },
+            { icon: '📏', text: 'Length: 160 feet' },
+            { icon: '📅', text: 'Built: 2018' },
+            { icon: '🔧', text: 'Deck Equipment: Heavy Lift Crane' }
+          ],
+          description: 'Flotug1600 is a specialized crane barge equipped with heavy lifting capabilities. Perfect for offshore construction and installation projects.'
+        },
+        'Mariana VII': {
+          type: 'Twin Screw Tug',
+          image: 'images/ship_pics/mariana_vii.png',
+          specs: [
+            { icon: '⚡', text: 'Power: 2 x 350HP' },
+            { icon: '📅', text: 'Built: 2002' },
+            { icon: '🎯', text: 'Bollard Pull: 15T' },
+            { icon: '📏', text: 'LOA: 23m' }
+          ],
+          description: 'Mariana VII is a reliable twin screw tug designed for harbor operations and coastal towing. Its dual propulsion system ensures excellent maneuverability.'
+        },
+        'Mariana IX': {
+          type: 'Twin Screw Tug',
+          image: 'images/ship_pics/mariana_ix.png',
+          specs: [
+            { icon: '⚡', text: 'Power: 2 x 400HP' },
+            { icon: '📅', text: 'Built: 2006' },
+            { icon: '🎯', text: 'Bollard Pull: 18T' },
+            { icon: '📏', text: 'LOA: 24m' }
+          ],
+          description: 'Mariana IX features enhanced power output compared to its predecessor, making it more capable in challenging towing operations.'
+        },
+        'Ocean Kilo': {
+          type: 'Twin Screw Tug',
+          image: 'images/ship_pics/ocean_kilo.png',
+          specs: [
+            { icon: '⚡', text: 'Power: 2 x 450HP' },
+            { icon: '📅', text: 'Built: 2010' },
+            { icon: '🎯', text: 'Bollard Pull: 20T' },
+            { icon: '📏', text: 'LOA: 25m' }
+          ],
+          description: 'Ocean Kilo represents the latest in twin screw technology, offering improved efficiency and reliability for various maritime operations.'
+        },
+        'SPO Swift': {
+          type: 'AHTS/DP2',
+          image: 'images/ship_pics/spo_swift.png',
+          specs: [
+            { icon: '⚡', text: 'Power: 2 x 3000HP' },
+            { icon: '📅', text: 'Built: 2015' },
+            { icon: '🎯', text: 'Bollard Pull: 80T' },
+            { icon: '🛠️', text: 'DP2 System' }
+          ],
+          description: 'SPO Swift is a modern Anchor Handling Tug Supply vessel with DP2 capability, designed for offshore support and deep-water operations.'
+        },
+        'SPO Intan': {
+          type: 'AHT',
+          image: 'images/ship_pics/spo_intan.png',
+          specs: [
+            { icon: '⚡', text: 'Power: 2 x 2500HP' },
+            { icon: '📅', text: 'Built: 2012' },
+            { icon: '🎯', text: 'Bollard Pull: 65T' },
+            { icon: '📏', text: 'LOA: 48m' }
+          ],
+          description: 'SPO Intan is a powerful Anchor Handling Tug designed for offshore towing and anchor handling operations.'
+        },
+        'SPO Robin': {
+          type: 'AHT',
+          image: 'images/ship_pics/spo_robin.png',
+          specs: [
+            { icon: '⚡', text: 'Power: 2 x 2200HP' },
+            { icon: '📅', text: 'Built: 2011' },
+            { icon: '🎯', text: 'Bollard Pull: 60T' },
+            { icon: '📏', text: 'LOA: 45m' }
+          ],
+          description: 'SPO Robin specializes in anchor handling and towing operations, featuring robust equipment for offshore support.'
+        },
+        'Seacove Pearl': {
+          type: 'Utility Vessel',
+          image: 'images/ship_pics/seacove_pearl.png',
+          specs: [
+            { icon: '⚡', text: 'Power: 2 x 1000HP' },
+            { icon: '📅', text: 'Built: 2014' },
+            { icon: '👥', text: 'Passenger Capacity: 50 PAX' },
+            { icon: '📏', text: 'LOA: 35m' }
+          ],
+          description: 'Seacove Pearl is a versatile utility vessel designed for personnel transfer and light cargo operations in offshore environments.'
+        },
+        'SPO Eagle': {
+          type: 'AHT',
+          image: 'images/ship_pics/spo_eagle.png',
+          specs: [
+            { icon: '⚡', text: 'Power: 2 x 2400HP' },
+            { icon: '📅', text: 'Built: 2013' },
+            { icon: '🎯', text: 'Bollard Pull: 62T' },
+            { icon: '📏', text: 'LOA: 46m' }
+          ],
+          description: 'SPO Eagle is equipped for demanding offshore operations, featuring advanced anchor handling and towing capabilities.'
+        },
+        'PSB Roller': {
+          type: 'AHT',
+          image: 'images/ship_pics/psb_roller.png',
+          specs: [
+            { icon: '⚡', text: 'Power: 2 x 2300HP' },
+            { icon: '📅', text: 'Built: 2012' },
+            { icon: '🎯', text: 'Bollard Pull: 61T' },
+            { icon: '📏', text: 'LOA: 45m' }
+          ],
+          description: 'PSB Roller is a reliable Anchor Handling Tug designed for various offshore support operations and towing tasks.'
+        }
+      };
+
+      // Function to open vessel modal
+      function openVesselModal(vesselName) {
+        const vessel = vesselData[vesselName];
+        if (!vessel) return;
+
+        const modal = document.getElementById('vessel-modal');
+        const image = document.getElementById('modal-vessel-image');
+        const name = document.getElementById('modal-vessel-name');
+        const type = document.getElementById('modal-vessel-type');
+        const specs = document.getElementById('modal-vessel-specs');
+        const description = document.getElementById('modal-vessel-description');
+
+        // Set modal content
+        image.src = vessel.image;
+        name.textContent = vesselName;
+        type.textContent = vessel.type;
+
+        // Create specs groups
+        specs.innerHTML = `
+          <div class="spec-group">
+            <h4>Technical Specifications</h4>
+            <ul class="spec-list">
+              ${vessel.specs.map(spec => `
+                <li><span class="spec-icon">${spec.icon}</span>${spec.text}</li>
+              `).join('')}
+            </ul>
+          </div>
+        `;
+
+        description.textContent = vessel.description;
+
+        // Show modal
+        modal.style.display = 'flex';
+        requestAnimationFrame(() => {
+          modal.classList.add('active');
+        });
+
+        // Prevent body scroll
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeVesselModal() {
+        const modal = document.getElementById('vessel-modal');
+        modal.classList.remove('active');
+        setTimeout(() => {
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+        }, 300);
+      }
+
+      // Add click handlers to ship containers
+      document.addEventListener('DOMContentLoaded', () => {
+        const shipContainers = document.querySelectorAll('.ship-container');
+        
+        shipContainers.forEach(container => {
+          const shipLabel = container.querySelector('.ship-label');
+          
+          // Pause animation on hover for both ship and label
+          container.addEventListener('mouseenter', () => {
+            container.style.animationPlayState = 'paused';
+          });
+
+          shipLabel.addEventListener('mouseenter', () => {
+            container.style.animationPlayState = 'paused';
+          });
+
+          // Resume animation on mouse leave for both ship and label
+          container.addEventListener('mouseleave', () => {
+            container.style.animationPlayState = 'running';
+          });
+
+          shipLabel.addEventListener('mouseleave', () => {
+            container.style.animationPlayState = 'running';
+          });
+
+          // Handle click for both ship and label
+          const handleClick = (e) => {
+            const vesselName = shipLabel.textContent.split(' • ')[0];
+            openVesselModal(vesselName);
+            e.stopPropagation();
+          };
+
+          container.addEventListener('click', handleClick);
+          shipLabel.addEventListener('click', handleClick);
+        });
+
+        // Close modal on outside click
+        document.getElementById('vessel-modal').addEventListener('click', (e) => {
+          if (e.target === e.currentTarget) {
+            closeVesselModal();
+          }
+        });
+
+        // Close modal on escape key
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            closeVesselModal();
+          }
+        });
+      });
+
+      // Add intersection observer for timeline animations
+      document.addEventListener('DOMContentLoaded', function() {
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        
+        const timelineObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              // Add animate class to trigger subtle reveal animation
+              entry.target.classList.add('animate');
+              timelineObserver.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.2,
+          rootMargin: '0px 0px -50px 0px' // Trigger animation slightly earlier
+        });
+
+        timelineItems.forEach((item, index) => {
+          // Set subtle animation delay based on index
+          item.style.animationDelay = `${(index + 1) * 0.05}s`;
+          timelineObserver.observe(item);
+        });
+      });
+
+      // Mobile menu toggle function
+      function toggleMenu() {
+        const menu = document.getElementById('nav-menu');
+        menu.classList.toggle('active');
+      }
+
+      // Close menu when clicking a link
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          const menu = document.getElementById('nav-menu');
+          menu.classList.remove('active');
+        });
+      });
+
+      // Universal Progress Bar with Scroll Wheel
+      class PageProgressBar {
+        constructor() {
+          this.progressBar = this.createProgressBar();
+          this.scrollWheel = this.createScrollWheel();
+          this.init();
+        }
+
+        init() {
+          window.addEventListener('scroll', () => {
+            this.updateProgress();
+            this.updateScrollWheel();
+          }, { passive: true });
+        }
+
+        createProgressBar() {
+          const progressContainer = document.createElement('div');
+          progressContainer.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: rgba(0,51,102,0.1);
+            z-index: 1001;
+            pointer-events: none;
+          `;
+          
+          const progressBar = document.createElement('div');
+          progressBar.style.cssText = `
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #003366, #0066cc, #4d9fff);
+            transition: width 0.3s ease;
+          `;
+          
+          progressContainer.appendChild(progressBar);
+          document.body.appendChild(progressContainer);
+          
+          return progressBar;
+        }
+
+        createScrollWheel() {
+          const wheelContainer = document.createElement('div');
+          wheelContainer.style.cssText = `
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(0, 51, 102, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 25px rgba(0, 51, 102, 0.3);
+            z-index: 1000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+          `;
+
+          const wheelProgress = document.createElement('div');
+          wheelProgress.style.cssText = `
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: conic-gradient(
+              #4d9fff 0deg,
+              #4d9fff 0deg,
+              rgba(255, 255, 255, 0.2) 0deg,
+              rgba(255, 255, 255, 0.2) 360deg
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+          `;
+
+          const wheelInner = document.createElement('div');
+          wheelInner.style.cssText = `
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: rgba(0, 51, 102, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+          `;
+
+          wheelInner.textContent = '0%';
+
+          wheelProgress.appendChild(wheelInner);
+          wheelContainer.appendChild(wheelProgress);
+          document.body.appendChild(wheelContainer);
+
+          // Add click handler to scroll to top
+          wheelContainer.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+
+          // Add hover effect
+          wheelContainer.addEventListener('mouseenter', () => {
+            wheelContainer.style.transform = 'translateY(-50%) scale(1.1)';
+            wheelContainer.style.boxShadow = '0 12px 35px rgba(0, 51, 102, 0.4)';
+          });
+
+          wheelContainer.addEventListener('mouseleave', () => {
+            wheelContainer.style.transform = 'translateY(-50%) scale(1)';
+            wheelContainer.style.boxShadow = '0 8px 25px rgba(0, 51, 102, 0.3)';
+          });
+
+          return { container: wheelContainer, progress: wheelProgress, inner: wheelInner };
+        }
+
+        updateProgress() {
+          const scrollTop = window.pageYOffset;
+          const documentHeight = document.documentElement.scrollHeight;
+          const windowHeight = window.innerHeight;
+          
+          const scrollableHeight = documentHeight - windowHeight;
+          const progress = (scrollTop / scrollableHeight) * 100;
+          
+          this.progressBar.style.width = Math.min(Math.max(progress, 0), 100) + '%';
+          
+          // Show/hide progress bar based on scroll position
+          if (scrollTop > 100) {
+            this.progressBar.parentElement.style.opacity = '1';
+          } else {
+            this.progressBar.parentElement.style.opacity = '0.3';
+          }
+        }
+
+        updateScrollWheel() {
+          const scrollTop = window.pageYOffset;
+          const documentHeight = document.documentElement.scrollHeight;
+          const windowHeight = window.innerHeight;
+          
+          const scrollableHeight = documentHeight - windowHeight;
+          const progress = Math.min(Math.max((scrollTop / scrollableHeight) * 100, 0), 100);
+          
+          // Update circular progress
+          const progressDegrees = (progress / 100) * 360;
+          this.scrollWheel.progress.style.background = `conic-gradient(
+            #4d9fff 0deg,
+            #4d9fff ${progressDegrees}deg,
+            rgba(255, 255, 255, 0.2) ${progressDegrees}deg,
+            rgba(255, 255, 255, 0.2) 360deg
+          )`;
+          
+          // Update percentage text
+          this.scrollWheel.inner.textContent = Math.round(progress) + '%';
+          
+          // Show/hide scroll wheel
+          if (scrollTop > 200) {
+            this.scrollWheel.container.style.opacity = '0.9';
+            this.scrollWheel.container.style.pointerEvents = 'auto';
+          } else {
+            this.scrollWheel.container.style.opacity = '0';
+            this.scrollWheel.container.style.pointerEvents = 'none';
+          }
+        }
+      }
+
+      // Initialize progress bar
+      document.addEventListener('DOMContentLoaded', () => {
+        new PageProgressBar();
+      });
+    </script>
+  
+<script type="text/javascript" src="/unprotected/back_to_spaceship.js?hash=4975d460e508829e8fb64d3962bc44ad35f3a95a"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const images = document.querySelectorAll('.vessel-mini-image img');
+        
+        images.forEach(img => {
+          // Add loading state
+          img.parentElement.classList.add('loading');
+          
+          // Handle successful load
+          img.addEventListener('load', function() {
+            this.parentElement.classList.remove('loading');
+          });
+          
+          // Handle error
+          img.addEventListener('error', function() {
+            this.parentElement.classList.remove('loading');
+            this.parentElement.classList.add('error');
+            
+            // Use a default image if available
+            const originalSrc = this.src;
+            const filename = originalSrc.split('/').pop();
+            
+            // Log the error for debugging
+            console.error(`Failed to load image: ${filename}`);
+            
+            // Remove the broken image but keep the container
+            this.style.display = 'none';
+          });
+        });
+
+        // Pause animations when the tab is not visible
+        document.addEventListener('visibilitychange', function() {
+          const shipRows = document.querySelectorAll('.ship-row');
+          if (document.hidden) {
+            shipRows.forEach(row => {
+              row.style.animationPlayState = 'paused';
+            });
+          } else {
+            shipRows.forEach(row => {
+              row.style.animationPlayState = 'running';
+            });
+          }
+        });
+
+        // Restart animations when they end to ensure smooth looping
+        const shipRows = document.querySelectorAll('.ship-row');
+        shipRows.forEach(row => {
+          row.addEventListener('animationend', function() {
+            this.style.animation = 'none';
+            this.offsetHeight; // Trigger reflow
+            this.style.animation = null;
+          });
+        });
+      });
+    </script>
+
+</body>
+</html> 
+</html> 
+</html> 

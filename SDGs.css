@@ -1,0 +1,46 @@
+body{
+  background-image: url("Park\ Bo\ Gum.jpg");
+}
+
+.navbar{
+  display:flex;
+  justify-content:center;
+  padding:20px 0;
+  position:relative;
+  z-index:10;
+}
+
+.nav-container{
+  background:#f7f1e8;
+  width:92%;
+  padding:15px 25px;
+  border-radius:50px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+.logo{
+  height:55px;
+}
+
+.nav-links{
+  list-style:none;
+  display:flex;
+  gap:30px;
+}
+
+.nav-links li a{
+  text-decoration:none;
+  color:#1c3959;
+  font-weight:500;
+  padding:8px 15px;
+  transition:0.3s;
+  border-radius:20px;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active{
+  background:white;
+  box-shadow:0 0 10px rgba(0,0,0,0.1);
+}

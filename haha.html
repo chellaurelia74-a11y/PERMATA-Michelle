@@ -1,0 +1,864 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PESONAEDU Young Creators Competition</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7fbff;
+      --card: #fff;
+      --accent: #00a86b;
+      --accent-dark: #0f5;
+      --text: #1f2a37;
+      --muted: #5f6b7a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Outfit", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      position: relative;
+      overflow: hidden;
+      background: #062c1f;
+      color: #fff;
+      padding: 120px 8vw 100px;
+    }
+    header h1 { margin: 0 0 12px; font-size: clamp(2rem, 4vw, 3.4rem); }
+    header p { margin: 0; max-width: 720px; font-size: 1.05rem; }
+    main { padding: 48px 8vw 80px; display: flex; flex-direction: column; gap: 48px; }
+    .grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .card {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 15px 45px rgba(0,0,0,.08);
+      min-height: 240px;
+    }
+    .card h3 { margin-top: 0; }
+    .tagline {
+      font-weight: 600;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.4);
+      border-radius: 999px;
+      display: inline-flex;
+      padding: 6px 16px;
+      margin-bottom: 18px;
+      align-items: center;
+      gap: 8px;
+    }
+    .timeline ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .timeline li {
+      padding: 12px 0;
+      border-bottom: 1px solid #e4e9f1;
+    }
+    .timeline strong { display: block; }
+    footer {
+      padding: 32px 8vw 48px;
+      text-align: center;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .dashboard {
+      position: sticky;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #ffffffee;
+      backdrop-filter: blur(8px);
+      border-radius: 0 0 20px 20px;
+      padding: 16px 6vw;
+      box-shadow: 0 12px 30px rgba(15,55,40,.12);
+      z-index: 999;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+    }
+    .lang-select {
+      margin-left: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 180px;
+    }
+    .lang-select label {
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--muted);
+    }
+    select {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid #cfd8e3;
+      font-size: .95rem;
+      background: #fff;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--accent);
+      background: rgba(0,168,107,.12);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: .9rem;
+      font-weight: 600;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      opacity: .45;
+    }
+    .hero-bg .forest,
+    .hero-bg .flood {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+    }
+    .hero-bg .forest {
+      background-image: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=60&fm=webp');
+      mix-blend-mode: screen;
+    }
+    .hero-bg .flood {
+      background-image: url('https://images.unsplash.com/photo-1502303756762-a481a3fd9ec7?auto=format&fit=crop&w=1600&q=60&fm=webp');
+      mix-blend-mode: lighten;
+      opacity: .4;
+    }
+    header > *:not(.hero-bg) { position: relative; z-index: 1; }
+    .cta-group {
+      display: flex;
+      gap: 16px;
+      margin: 24px 0 32px;
+      flex-wrap: wrap;
+    }
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid transparent;
+      transition: transform .2s ease, box-shadow .2s;
+    }
+    .cta.primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 10px 30px rgba(0,168,107,.35);
+    }
+    .cta.ghost {
+      border-color: rgba(255,255,255,.6);
+      color: #fff;
+    }
+    .cta:hover { transform: translateY(-2px); }
+    .stats-card {
+      background: rgba(0,0,0,.35);
+      border-radius: 16px;
+      padding: 20px;
+      max-width: 420px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.12);
+    }
+    #statsCanvas { width: 100%; height: auto; display: block; margin-bottom: 12px; }
+    section {
+      background: #fefefe;
+      border-radius: 24px;
+      padding: 48px;
+      box-shadow: 0 25px 60px rgba(0,0,0,.05);
+    }
+    section + section {
+      margin-top: 8px;
+    }
+    .section-heading { max-width: 720px; margin-bottom: 32px; }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      font-size: .78rem;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .gallery-card {
+      background: #000;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+    .gallery-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform .4s ease;
+    }
+    .gallery-card:hover img { transform: scale(1.08); }
+    .gallery-card figcaption {
+      padding: 12px 14px;
+      color: #fff;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,.8));
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      font-size: .92rem;
+    }
+    .issue-list {
+      list-style: none;
+      margin: 0 0 32px;
+      padding: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .issue-list li {
+      padding: 12px 16px;
+      border-left: 4px solid var(--accent);
+      background: #f3fbf7;
+      border-radius: 8px;
+    }
+    .card.quiz { margin-top: 16px; }
+    .quiz-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .quiz-options button {
+      flex: 1;
+      min-width: 160px;
+      border: none;
+      background: #eefcf6;
+      border-radius: 12px;
+      padding: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .actions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .calculator input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #cfd8e3;
+      margin: 10px 0 16px;
+    }
+    .media iframe {
+      width: 100%;
+      height: 220px;
+      border: none;
+      border-radius: 12px;
+    }
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    #timelineTrack {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+    .timeline-item {
+      min-width: 140px;
+      padding: 16px;
+      border-radius: 14px;
+      background: #f1f7ff;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid #d0dae7;
+      margin-top: 6px;
+    }
+    .contact-form label { display: block; margin-bottom: 18px; font-weight: 600; }
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .pill-list li {
+      background: rgba(0,168,107,.12);
+      color: var(--accent);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: .85rem;
+    }
+    @media (max-width: 900px) {
+      header { padding-top: 120px; }
+      section { padding: 32px; }
+    }
+    @media (max-width: 720px) {
+      header, main, footer { padding-left: 6vw; padding-right: 6vw; }
+      .dashboard {
+        border-radius: 0;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .lang-select {
+        width: 100%;
+        margin-left: 0;
+      }
+      nav { justify-content: flex-start; width: 100%; }
+      .quiz-options { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <section class="dashboard">
+    <nav>
+      <a href="#home" data-i18n="nav.home">Beranda</a>
+      <a href="#issue" data-i18n="nav.issue">Tentang Masalah</a>
+      <a href="#solutions" data-i18n="nav.solutions">Solusi & Aksi</a>
+      <a href="#resources" data-i18n="nav.resources">Sumber Daya</a>
+      <a href="#contact" data-i18n="nav.contact">Kontak</a>
+    </nav>
+    <div class="lang-select">
+      <label for="language" data-i18n="dashboard.label">Pilih Bahasa</label>
+      <select id="language">
+        <option value="id">Bahasa Indonesia</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+  </section>
+
+  <header id="home">
+    <div class="hero-bg">
+      <div class="forest"></div>
+      <div class="flood"></div>
+    </div>
+    <div class="tagline" data-i18n="tagline">Rise for Climate Action</div>
+    <h1 data-i18n="hero.title">Rise for Climate Action: Aksi Generasi Muda untuk Bumi Berkelanjutan</h1>
+    <p data-i18n="hero.subtitle">
+      Di tengah krisis iklim global, Indonesia menghadapi banjir ekstrem dan hilangnya hutan hujan. Website ini mendidik tentang
+      dampaknya dan solusi sederhana yang bisa dilakukan setiap orang, terutama siswa SMP-SMA, untuk berkontribusi positif bagi
+      masyarakat dan lingkungan.
+    </p>
+    <div class="cta-group">
+      <a class="cta primary" href="#issue" data-i18n="hero.cta1">Pelajari Masalah</a>
+      <a class="cta ghost" href="#solutions" data-i18n="hero.cta2">Ikuti Aksi</a>
+    </div>
+    <div class="stats-card">
+      <canvas id="statsCanvas" width="320" height="120" aria-hidden="true"></canvas>
+      <p data-i18n="hero.stats">
+        Suhu global naik 1.1°C sejak era pra-industri, menyebabkan 20% banjir di Jakarta lebih sering.
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <section id="issue">
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="issue.eyebrow">Halaman Utama · Tentang Masalah Iklim</p>
+        <h2 data-i18n="issue.title">Apa Itu Perubahan Iklim?</h2>
+        <p data-i18n="issue.body">
+          Perubahan iklim disebabkan oleh emisi gas rumah kaca seperti CO₂ dari deforestasi dan industri, yang memanaskan bumi
+          dan mengganggu pola cuaca. Dampaknya nyata di Indonesia: banjir, kebakaran hutan, dan krisis air bersih.
+        </p>
+      </div>
+      <div class="gallery">
+        <figure class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1502303756762-a481a3fd9ec7?auto=format&fit=crop&w=700&q=60&fm=webp"
+            alt="Jakarta flooded street" loading="lazy" />
+          <figcaption data-i18n="gallery.jakarta">
+            Jakarta: sebelum dan sesudah banjir tahunan yang makin sering. Hover untuk detail.
+          </figcaption>
+        </figure>
+        <figure class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=700&q=60&fm=webp"
+            alt="Borneo forest" loading="lazy" />
+          <figcaption data-i18n="gallery.borneo">
+            Hutan Borneo menyusut karena deforestasi sawit, mengurangi karbon sink hingga 50%.
+          </figcaption>
+        </figure>
+      </div>
+      <ul class="issue-list">
+        <li data-i18n="issue.point1">Banjir tahunan di kota besar akibat naiknya permukaan laut.</li>
+        <li data-i18n="issue.point2">Deforestasi sawit mengurangi karbon sink hingga 50% di Sumatra.</li>
+        <li data-i18n="issue.point3">Kekeringan Nusa Tenggara mengancam pertanian dan air bersih.</li>
+      </ul>
+      <div class="quiz card">
+        <h3 data-i18n="quiz.title">Kuis Cepat</h3>
+        <p data-i18n="quiz.question">Apa penyebab utama pemanasan global?</p>
+        <div class="quiz-options">
+          <button data-answer="wrong" data-i18n="quiz.option1">Letusan gunung</button>
+          <button data-answer="correct" data-i18n="quiz.option2">Emisi gas rumah kaca dari aktivitas manusia</button>
+          <button data-answer="wrong" data-i18n="quiz.option3">Gerhana matahari</button>
+        </div>
+        <p class="quiz-feedback" data-i18n="quiz.feedback">Jawabanmu?</p>
+        <small data-i18n="quiz.source">Sumber data: NASA Climate Kids</small>
+      </div>
+    </section>
+
+    <section id="solutions">
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="solutions.eyebrow">Solusi & Aksi</p>
+        <h2 data-i18n="solutions.title">Bagaimana Kita Bisa Bertindak?</h2>
+        <p data-i18n="solutions.body">
+          Setiap aksi kecil berdampak besar—mulai dari mengurangi plastik hingga menanam pohon virtual melalui website ini.
+          Bentuk Green Team, buat proyek air, dan bagikan inspirasimu!
+        </p>
+      </div>
+      <div class="actions-grid">
+        <article class="card" data-i18n="solutions.project1">
+          Buat taman sekolah berkelanjutan dengan kompos organik untuk mengurangi limbah.
+        </article>
+        <article class="card" data-i18n="solutions.project2">
+          Kampanye hemat energi: Matikan lampu saat tidak digunakan, hemat hingga 20% emisi karbon.
+        </article>
+        <article class="card" data-i18n="solutions.project3">
+          Bentuk Green Team untuk event Earth Day atau menu vegetarian di kantin (kurangi emisi daging 7% global).
+        </article>
+        <article class="card" data-i18n="solutions.project4">
+          Proyek air: Bangun rain gauge sederhana untuk monitor curah hujan lokal dan cegah banjir.
+        </article>
+      </div>
+      <div class="calculator card">
+        <h3 data-i18n="calculator.title">Calculator Jejak Karbon Harian</h3>
+        <label>
+          <span data-i18n="calculator.label">Konsumsi listrik rumah (kWh per hari)</span>
+          <input type="number" id="kwhInput" min="0" step="0.1" value="5" />
+        </label>
+        <button id="calcButton" data-i18n="calculator.button">Hitung & Dapatkan Tips</button>
+        <p id="calcResult" data-i18n="calculator.result">Masukkan angka untuk melihat dampakmu.</p>
+      </div>
+      <div class="media card">
+        <h3 data-i18n="media.title">Video Inspirasi</h3>
+        <p data-i18n="media.body">Model gas rumah kaca dari gumdrops (maks 2 menit).</p>
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/tbzQ5Z7Ag38" title="Gumdrop Greenhouse Model" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <button class="cta primary" data-i18n="media.cta">Bagikan Aksi Kamu</button>
+      </div>
+    </section>
+
+    <section id="resources">
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="resources.eyebrow">Sumber Daya Edukasi</p>
+        <h2 data-i18n="resources.title">Pelajari Lebih Lanjut</h2>
+        <p data-i18n="resources.body">
+          Tingkatkan literasi digital tentang iklim dengan alat belajar gratis, timeline interaktif, dan template proposal projek.
+        </p>
+      </div>
+      <div class="resources-grid">
+        <article class="card">
+          <h3 data-i18n="resources.linksTitle">Tautan Gratis</h3>
+          <ul data-i18n="resources.linksList">
+            <li><a href="https://climatekids.nasa.gov/" target="_blank">NASA Climate Kids</a></li>
+            <li><a href="https://www.wwf.org.uk/updates/lesson-plans" target="_blank">WWF Lesson Plans</a></li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3 data-i18n="resources.mediaTitle">Buku & Video</h3>
+          <p data-i18n="resources.mediaBody">
+            "Our Planet" oleh David Attenborough dan kursus iklim di Khan Academy untuk memperkuat data dan narasi.
+          </p>
+        </article>
+        <article class="card">
+          <h3 data-i18n="resources.templateTitle">Template Proposal</h3>
+          <p data-i18n="resources.templateBody">
+            Unduh template Canva gratis untuk mengisi identitas tim, tujuan, teknologi, dan dampak.
+          </p>
+          <a class="cta ghost" href="#" data-i18n="resources.templateCTA">Unduh PDF</a>
+        </article>
+        <article class="card">
+          <h3 data-i18n="resources.tipsTitle">Tips Web Berkelanjutan</h3>
+          <ul data-i18n="resources.tipsList">
+            <li>Optimasi gambar WebP.</li>
+            <li>Pakai hosting energi terbarukan.</li>
+            <li>Minimalkan animasi berat.</li>
+          </ul>
+        </article>
+      </div>
+      <div class="timeline card">
+        <h3 data-i18n="timeline.title">Timeline Perubahan Iklim</h3>
+        <div id="timelineTrack"></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="contact.eyebrow">Kontak & Kolaborasi</p>
+        <h2 data-i18n="contact.title">Bergabunglah dengan Kami</h2>
+        <p data-i18n="contact.body">
+          Kirim ide proyek iklimmu atau feedback untuk website ini. Ceritakan aksi di sekolahmu—kami bagikan di halaman utama!
+        </p>
+      </div>
+      <div class="contact-grid">
+        <form class="card contact-form">
+          <label>
+            <span data-i18n="contact.name">Nama</span>
+            <input type="text" required />
+          </label>
+          <label>
+            <span data-i18n="contact.email">Email</span>
+            <input type="email" required />
+          </label>
+          <label>
+            <span data-i18n="contact.message">Cerita atau pertanyaan</span>
+            <textarea rows="4" required></textarea>
+          </label>
+          <button type="submit" class="cta primary" data-i18n="contact.button">Kirim</button>
+        </form>
+        <div class="card contact-info">
+          <h3 data-i18n="contact.infoTitle">Hubungi Panitia</h3>
+          <p data-i18n="contact.infoBody">Bu Lusi · lusi@pesonaedu.id<br>Pak Feby · feby@pesonaedu.id</p>
+          <p data-i18n="contact.collab">Bagikan aksi iklim sekolah Anda untuk tampil di PESONAEDU YCC.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p data-i18n="footer">
+      © 2025 EcoWeb Innovators – Dibuat untuk PESONAEDU YCC · Kontak secretariat@pesonaedu.id
+    </p>
+  </footer>
+
+  <script>
+    const translations = {
+      en: {
+        "dashboard.title": "Dashboard & Translate",
+        "dashboard.label": "Choose Language",
+        "nav.home": "Home",
+        "nav.issue": "About the Issue",
+        "nav.solutions": "Solutions & Actions",
+        "nav.resources": "Resources",
+        "nav.contact": "Contact",
+        tagline: "Rise for Climate Action",
+        "hero.title": "Rise for Climate Action: Youth Power for a Sustainable Earth",
+        "hero.subtitle":
+          "Amid global climate emergencies, Indonesia faces extreme floods and rainforest loss. This site educates on the impacts and simple actions every junior and senior high student can take to help communities and the planet.",
+        "hero.cta1": "Explore the Issue",
+        "hero.cta2": "Join the Action",
+        "hero.stats":
+          "Global temperatures have risen 1.1°C since the pre-industrial era, making 20% of Jakarta floods more frequent.",
+        "issue.eyebrow": "Home · About the Issue",
+        "issue.title": "What Is Climate Change?",
+        "issue.body":
+          "Climate change is driven by greenhouse gases like CO₂ from deforestation and industry, heating Earth and disrupting weather patterns. Indonesia feels it through floods, wildfires, and water crises.",
+        "gallery.jakarta":
+          "Jakarta: before-and-after of recurring floods. Hover to reveal insights.",
+        "gallery.borneo":
+          "Borneo forests shrink due to palm oil expansion, slashing carbon sinks by up to 50%.",
+        "issue.point1": "Annual floods in major cities due to rising sea levels.",
+        "issue.point2": "Palm oil deforestation cuts Sumatra’s carbon sink capacity by 50%.",
+        "issue.point3": "Nusa Tenggara droughts threaten farms and clean water.",
+        "quiz.title": "Quick Quiz",
+        "quiz.question": "What is the main driver of global warming?",
+        "quiz.option1": "Volcanic eruptions",
+        "quiz.option2": "Human-made greenhouse gas emissions",
+        "quiz.option3": "Solar eclipses",
+        "quiz.feedback": "Your answer?",
+        "quiz.source": "Data source: NASA Climate Kids",
+        "solutions.eyebrow": "Solutions & Actions",
+        "solutions.title": "How Can We Act?",
+        "solutions.body":
+          "Small actions matter—from cutting plastic use to planting virtual trees here. Form a Green Team, launch water projects, and share your inspiration!",
+        "solutions.project1":
+          "Create a sustainable school garden with compost to reduce organic waste.",
+        "solutions.project2":
+          "Energy-saving campaign: switch off unused lights, trimming up to 20% carbon emissions.",
+        "solutions.project3":
+          "Form a school Green Team for Earth Day events or vegetarian menus to lower meat emissions by 7% globally.",
+        "solutions.project4":
+          "Water project: build a DIY rain gauge to monitor local rainfall and prevent floods.",
+        "calculator.title": "Daily Carbon Footprint Calculator",
+        "calculator.label": "Home electricity use (kWh per day)",
+        "calculator.button": "Calculate & Get Tips",
+        "calculator.result": "Enter a value to see your impact.",
+        "media.title": "Inspiration Video",
+        "media.body": "Greenhouse gas demo using gumdrops (max 2 minutes).",
+        "media.cta": "Share Your Action",
+        "resources.eyebrow": "Education Hub",
+        "resources.title": "Learn More",
+        "resources.body":
+          "Boost climate literacy with free tools, an interactive timeline, and ready-to-use project proposal templates.",
+        "resources.linksTitle": "Free Links",
+        "resources.linksList":
+          "<li><a href='https://climatekids.nasa.gov/' target='_blank'>NASA Climate Kids</a></li><li><a href='https://www.wwf.org.uk/updates/lesson-plans' target='_blank'>WWF Lesson Plans</a></li>",
+        "resources.mediaTitle": "Books & Videos",
+        "resources.mediaBody":
+          "Watch “Our Planet” by David Attenborough and take the Khan Academy climate science course for data-backed storytelling.",
+        "resources.templateTitle": "Project Proposal Template",
+        "resources.templateBody":
+          "Download a free Canva PDF covering team info, goals, tech stack, and community impact.",
+        "resources.templateCTA": "Download PDF",
+        "resources.tipsTitle": "Sustainable Web Tips",
+        "resources.tipsList":
+          "<li>Optimize WebP images.</li><li>Use renewable-powered hosting.</li><li>Minimize heavy animations.</li>",
+        "timeline.title": "Climate Change Timeline",
+        "contact.eyebrow": "Contact & Collaborate",
+        "contact.title": "Join Us",
+        "contact.body":
+          "Send your climate project ideas or feedback. Share your school’s actions—we’ll spotlight them!",
+        "contact.name": "Name",
+        "contact.email": "Email",
+        "contact.message": "Story or question",
+        "contact.button": "Submit",
+        "contact.infoTitle": "Reach the Committee",
+        "contact.infoBody": "Ms. Lusi · lusi@pesonaedu.id<br>Mr. Feby · feby@pesonaedu.id",
+        "contact.collab":
+          "Share your school climate action to be featured on PESONAEDU YCC.",
+        footer:
+          "© 2025 EcoWeb Innovators – Built for PESONAEDU YCC · Contact secretariat@pesonaedu.id"
+      },
+      id: {
+        "dashboard.title": "Dasbor & Terjemahan",
+        "dashboard.label": "Pilih Bahasa",
+        "nav.home": "Beranda",
+        "nav.issue": "Tentang Masalah",
+        "nav.solutions": "Solusi & Aksi",
+        "nav.resources": "Sumber Daya",
+        "nav.contact": "Kontak",
+        tagline: "Bangkit untuk Aksi Iklim",
+        "hero.title": "Rise for Climate Action: Aksi Generasi Muda untuk Bumi Berkelanjutan",
+        "hero.subtitle":
+          "Di tengah krisis iklim global, Indonesia menghadapi banjir ekstrem dan hilangnya hutan hujan. Website ini mendidik tentang dampaknya dan solusi sederhana yang bisa dilakukan setiap orang, terutama siswa SMP-SMA, untuk berkontribusi positif bagi masyarakat dan lingkungan.",
+        "hero.cta1": "Pelajari Masalah",
+        "hero.cta2": "Ikuti Aksi",
+        "hero.stats":
+          "Suhu global naik 1,1°C sejak era pra-industri, membuat 20% banjir di Jakarta terjadi lebih sering.",
+        "issue.eyebrow": "Home · Tentang Masalah Iklim",
+        "issue.title": "Apa Itu Perubahan Iklim?",
+        "issue.body":
+          "Perubahan iklim dipicu gas rumah kaca seperti CO₂ dari deforestasi dan industri, memanaskan bumi dan mengacaukan pola cuaca. Dampaknya nyata di Indonesia: banjir, kebakaran hutan, dan krisis air.",
+        "gallery.jakarta":
+          "Jakarta: perbandingan sebelum-sesudah banjir tahunan. Arahkan kursor untuk insight.",
+        "gallery.borneo":
+          "Hutan Borneo menyusut akibat ekspansi sawit, memangkas kapasitas karbon hingga 50%.",
+        "issue.point1": "Banjir tahunan di kota besar akibat naiknya permukaan laut.",
+        "issue.point2": "Deforestasi sawit memangkas karbon sink Sumatra hingga 50%.",
+        "issue.point3": "Kekeringan Nusa Tenggara mengancam pangan dan air bersih.",
+        "quiz.title": "Kuis Cepat",
+        "quiz.question": "Apa penyebab utama pemanasan global?",
+        "quiz.option1": "Letusan gunung",
+        "quiz.option2": "Emisi gas rumah kaca dari aktivitas manusia",
+        "quiz.option3": "Gerhana matahari",
+        "quiz.feedback": "Jawabanmu?",
+        "quiz.source": "Sumber data: NASA Climate Kids",
+        "solutions.eyebrow": "Solusi & Aksi",
+        "solutions.title": "Bagaimana Kita Bisa Bertindak?",
+        "solutions.body":
+          "Aksi kecil berdampak besar—kurangi plastik, tanam pohon virtual, bentuk Green Team, dan bagikan inspirasimu!",
+        "solutions.project1":
+          "Buat taman sekolah berkelanjutan dengan kompos organik untuk mengurangi limbah.",
+        "solutions.project2":
+          "Kampanye hemat energi: matikan lampu saat tidak digunakan, hemat hingga 20% emisi karbon.",
+        "solutions.project3":
+          "Bentukkan Green Team untuk event Earth Day atau menu vegetarian di kantin (kurangi emisi daging 7% global).",
+        "solutions.project4":
+          "Proyek air: bangun rain gauge sederhana untuk memantau curah hujan lokal dan cegah banjir.",
+        "calculator.title": "Kalkulator Jejak Karbon Harian",
+        "calculator.label": "Konsumsi listrik rumah (kWh per hari)",
+        "calculator.button": "Hitung & Dapatkan Tips",
+        "calculator.result": "Masukkan angka untuk melihat dampakmu.",
+        "media.title": "Video Inspirasi",
+        "media.body": "Model gas rumah kaca dari gumdrops (maks 2 menit).",
+        "media.cta": "Bagikan Aksi Kamu",
+        "resources.eyebrow": "Sumber Daya Edukasi",
+        "resources.title": "Pelajari Lebih Lanjut",
+        "resources.body":
+          "Tingkatkan literasi iklim lewat alat gratis, timeline interaktif, dan template proposal proyek siap pakai.",
+        "resources.linksTitle": "Tautan Gratis",
+        "resources.linksList":
+          "<li><a href='https://climatekids.nasa.gov/' target='_blank'>NASA Climate Kids</a></li><li><a href='https://www.wwf.org.uk/updates/lesson-plans' target='_blank'>WWF Lesson Plans</a></li>",
+        "resources.mediaTitle": "Buku & Video",
+        "resources.mediaBody":
+          "\"Our Planet\" oleh David Attenborough dan kursus sains iklim Khan Academy memperkuat data & cerita.",
+        "resources.templateTitle": "Template Proposal",
+        "resources.templateBody":
+          "Unduh PDF Canva gratis berisi identitas tim, tujuan, teknologi, dan dampak.",
+        "resources.templateCTA": "Unduh PDF",
+        "resources.tipsTitle": "Tips Web Berkelanjutan",
+        "resources.tipsList":
+          "<li>Optimasi gambar WebP.</li><li>Pakai hosting energi terbarukan.</li><li>Minimalkan animasi berat.</li>",
+        "timeline.title": "Timeline Perubahan Iklim",
+        "contact.eyebrow": "Kontak & Kolaborasi",
+        "contact.title": "Bergabunglah dengan Kami",
+        "contact.body":
+          "Kirim ide proyek iklim atau feedback. Bagikan aksi sekolahmu dan kami tampilkan!",
+        "contact.name": "Nama",
+        "contact.email": "Email",
+        "contact.message": "Cerita atau pertanyaan",
+        "contact.button": "Kirim",
+        "contact.infoTitle": "Hubungi Panitia",
+        "contact.infoBody": "Bu Lusi · lusi@pesonaedu.id<br>Pak Feby · feby@pesonaedu.id",
+        "contact.collab":
+          "Bagikan aksi iklim sekolah untuk tampil di PESONAEDU YCC.",
+        footer:
+          "© 2025 EcoWeb Innovators – Dibuat untuk PESONAEDU YCC · Kontak secretariat@pesonaedu.id"
+      }
+    };
+
+    const timelineData = [
+      {
+        year: 1850,
+        en: "Industrial revolution boosts coal use.",
+        id: "Revolusi industri memicu lonjakan penggunaan batubara."
+      },
+      {
+        year: 1992,
+        en: "Earth Summit, Rio de Janeiro.",
+        id: "KTT Bumi di Rio de Janeiro menetapkan aksi global."
+      },
+      {
+        year: 2005,
+        en: "Kyoto Protocol takes effect.",
+        id: "Protokol Kyoto resmi berlaku untuk menekan emisi."
+      },
+      {
+        year: 2015,
+        en: "COP21 Paris Agreement signed.",
+        id: "Perjanjian Paris COP21 disepakati menjaga suhu 1,5°C."
+      },
+      {
+        year: 2021,
+        en: "COP26 commits to 1.5°C target.",
+        id: "COP26 menegaskan target 1,5°C dan net-zero."
+      },
+      {
+        year: 2025,
+        en: "Youth-led solutions drive PESONAEDU YCC.",
+        id: "Solusi dipimpin pemuda melalui PESONAEDU YCC."
+      }
+    ];
+
+    const elements = document.querySelectorAll("[data-i18n]");
+    const languageSelect = document.getElementById("language");
+    const timelineTrack = document.getElementById("timelineTrack");
+    const savedLang = localStorage.getItem("pesonaedu_lang") || "id";
+    let currentLang = savedLang;
+
+    function renderTimeline() {
+      if (!timelineTrack) return;
+      timelineTrack.innerHTML = timelineData
+        .map(
+          (item) =>
+            `<div class="timeline-item"><strong>${item.year}</strong><p>${item[currentLang]}</p></div>`
+        )
+        .join("");
+    }
+
+    function renderLanguage(lang) {
+      const locale = translations[lang] || translations.en;
+      currentLang = lang;
+      elements.forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        const value = locale[key];
+        if (Array.isArray(value)) {
+          el.innerHTML = value.map((item) => `<li>${item}</li>`).join("");
+        } else if (typeof value === "string") {
+          el.innerHTML = value;
+        }
+      });
+      document.documentElement.lang = lang;
+      localStorage.setItem("pesonaedu_lang", lang);
+      renderTimeline();
+    }
+
+    languageSelect.addEventListener("change", (e) => {
+      renderLanguage(e.target.value);
+    });
+
+    languageSelect.value = savedLang;
+    renderLanguage(savedLang);
+
+    // Quiz logic
+    document.querySelectorAll(".quiz-options button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const feedback = document.querySelector(".quiz-feedback");
+        if (btn.dataset.answer === "correct") {
+          feedback.textContent =
+            currentLang === "en" ? "Correct! Humans can change the future." : "Benar! Manusia bisa mengubah masa depan.";
+        } else {
+          feedback.textContent =
+            currentLang === "en"
+              ? "Not quite. Human-made greenhouse gases are the main cause."
+              : "Belum tepat. Emisi manusia adalah penyebab utama.";
+        }
+      });
+    });
+
+    // Carbon calculator
+    document.getElementById("calcButton").addEventListener("click", () => {
+      const kwh = parseFloat(document.getElementById("kwhInput").value || "0");
+      const emissionFactor = 0.82; // kg CO2 per kWh
+      const emission = (kwh * emissionFactor).toFixed(2);
+      const tips =
+        kwh > 10
+          ? currentLang === "en"
+            ? "Try shifting to LED bulbs and unplug idle chargers."
+            : "Coba ganti ke lampu LED dan cabut charger saat tidak dipakai."
+          : currentLang === "en"
+          ? "Great! Keep optimizing with solar chargers or daylight study sessions."
+          : "Keren! Terus optimalkan dengan charger tenaga surya atau belajar di siang hari.";
+      const unitText = currentLang === "en" ? "per day" : "per hari";
+      document.getElementById("calcResult").textContent = `${emission} kg CO₂ / ${unitText} · ${tips}`;
+    });
+
+    // Canvas stats
+    const canvas = document.getElementById("statsCanvas");
+    if (canvas?.getContext) {
+      const ctx = canvas.getContext("2d");
+      const floodPercent = 0.2;
+      const tempRise = 1.1;
+      function drawCanvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#0f5132";
+        ctx.fillRect(0, 40, canvas.width, 30);
+        ctx.fillStyle = "#29c94f";
+        ctx.fillRect(0, 40, canvas.width * (tempRise / 2), 30);
+        ctx.fillStyle = "#0d6efd";
+        ctx.fillRect(0, 80, canvas.width, 30);
+        ctx.fillStyle = "#9bd4ff";
+        ctx.fillRect(0, 80, canvas.width * floodPercent, 30);
+        ctx.fillStyle = "#fff";
+        ctx.font = "16px Outfit";
+        ctx.fillText(`+${tempRise}°C`, 10, 60);
+        ctx.fillText(`${floodPercent * 100}%`, 10, 100);
+      }
+      drawCanvas();
+    }
+  </script>
+</body>
+</html>
