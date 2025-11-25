@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>PERMATA: Pendidikan Merata untuk Semua</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="ok.css">
+</head>
+
+<body>
+
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <img src="PERMATA_LOGO-removebg-preview.png" class="gem" alt="Loading...">
+      <h1 class="preloader-text">PERMATA</h1>
+    </div>
+  </div>
+
+  <section id="home" class="hero">
+  <div class="hero-content">
+    <h1>Pendidikan Merata untuk Semua</h1>
+    <p>Mewujudkan akses pendidikan yang berkualitas, inklusif, dan berkelanjutan bagi seluruh masyarakat Indonesia.</p>
+    <a href="jaga2.html" class="enter-button">Ketahui Lebih Lanjut</a>
+  </div>
+</section>
+
+  <!-- PRELOADER SCRIPT -->
+  <script>
+    const MIN_LOADING_TIME = 3000; // 3 seconds
+    const start = Date.now();
+
+    window.addEventListener("load", () => {
+      const preloader = document.getElementById("preloader");
+      const elapsed = Date.now() - start;
+      const remaining = MIN_LOADING_TIME - elapsed;
+
+      setTimeout(() => {
+        preloader.style.opacity = "0";
+        setTimeout(() => {
+          preloader.style.display = "none";
+        }, 700);
+      }, remaining > 0 ? remaining : 0);
+    });
+  </script>
+
+</body>
+</html>
